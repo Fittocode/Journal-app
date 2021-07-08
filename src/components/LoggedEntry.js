@@ -11,12 +11,14 @@ const LoggedEntry = ({ date, tags, entryWordCount, text }) => {
                 <span>{entryWordCount} words</span>
             </StyledFirstRow>
             <br />
-            <StyledTag>{tags}</StyledTag>
+            <StyledTag>{tags.map(tag => {
+                return ` #${tag}`
+            })}</StyledTag>
             <br />
             <p>{text}</p>
             <br />
             <br />
-            <button>Hide this entry</button>
+            <button>Hide Entry</button>
         </StyledSub>
     )
 }

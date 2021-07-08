@@ -7,7 +7,7 @@ const LibraryTopic = ({ title, wordCount, date, firstTags, firstWords }) => {
         <StyledLibraryTopic>
             <StyledFirstLine>
                 <h3>{title}</h3>
-                <h4>{wordCount} words</h4>
+                <p>{wordCount} words</p>
             </StyledFirstLine>
             <p>created {date}</p>
             <StyledLine></StyledLine>

@@ -1,28 +1,24 @@
 import React from 'react'
 // style 
 import styled from 'styled-components'
-import topics from '../topics.json'
 // components
 import LoggedEntry from './LoggedEntry'
-import NewEntry from './NewEntry'
 
-const Topic = ({ topicTitle, topicWordCount, entries }) => {
+const OverviewTopics = ({ topicTitle, topicWordCount, entries }) => {
 
-    // const entries = topics.entries
-    console.log(topics[0].entries)
+    const featuredEntry = entries[entries.length - 1]
 
     return (
         <StyledTopic>
             <StyledFirstRow>
-                <h1>{topicTitle} </h1>
-                <span>{topicWordCount} words</span>
+                <h2>{topicTitle} </h2>
+                <span>Entries: {entries.length}</span>
+                <span>Created: {entries[0].date}</span>
+                <span>{topicWordCount} total words</span>
             </StyledFirstRow>
             <StyledLoggedEntry>
-                {entries.map(entry => {
-                    return <LoggedEntry date={entry.date} tags={entry.tags} entryWordCount={entry.wordCount} text={entry.text} />
-                })}
+                <LoggedEntry date={featuredEntry.date} tags={featuredEntry.tags} entryWordCount={featuredEntry.wordCount} text={featuredEntry.text} />
             </StyledLoggedEntry>
-            <NewEntry />
         </StyledTopic>
     )
 }
@@ -45,4 +41,4 @@ const StyledLoggedEntry = styled.div`
    padding-top: 1rem;  
 `
 
-export default Topic
+export default OverviewTopics

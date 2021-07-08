@@ -1,7 +1,7 @@
 import { React, useState } from 'react'
 import ReactQuill from 'react-quill';
 
-const NewEntry = () => {
+const AddTopic = () => {
 
     const [text, setText] = useState('')
 
@@ -17,10 +17,10 @@ const NewEntry = () => {
         <div>
             <ReactQuill value={text}
                 onChange={handleChange} />
-            <button onSubmit={() => handleSubmit(text)}>Submit Entry</button>
+            <button onSubmit={() => handleSubmit(text)}>Submit Topic</button>
         </div>
 
     )
 }
 
-export default NewEntry
+export default AddTopic

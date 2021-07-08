@@ -1,10 +1,13 @@
 // Step 1: Import React
 import * as React from 'react'
+// style
+import styled from 'styled-components'
 // components
 import GlobalStyle from './components/GlobalStyle'
 import Navbar from './components/Navbar'
+import topics from './topics.json'
 import Library from './components/Library'
-import Topic from './components/Topic'
+import OverviewTopics from './components/OverviewTopics'
 
 const IndexPage = () => {
   return (
@@ -12,13 +15,29 @@ const IndexPage = () => {
       <GlobalStyle />
 
       <Navbar />
-      <Library title={'Recent Entries'} />
-      <Topic title={'How to get Maya to accept me as one of her own'} date={'7/2/21'} wordCount={50} />
-
+      <Library title={'Featured Topics'} />
+      <StyledFirstRow>
+        <StyledHeadline>Recent/All Topics</StyledHeadline>
+        <StyledHeadline>Add Topic</StyledHeadline>
+      </StyledFirstRow>
+      {topics.map(topic => {
+        return <OverviewTopics topicTitle={topic.topicTitle} topicWordCount={topic.topicWordCount} entries={topic.entries} />
+      })}
     </div>
 
   )
 }
 
+const StyledHeadline = styled.h2`
+  color: black;
+  padding-top: 2rem;
+    margin-right: 5%;
+    margin-left: 20%;
+`
+
+const StyledFirstRow = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
 
 export default IndexPage
