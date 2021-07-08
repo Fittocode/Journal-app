@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // components
 import LoggedEntry from './LoggedEntry'
 
-const OverviewTopics = ({ topicTitle, topicWordCount, entries }) => {
+const OverviewTopic = ({ topicTitle, topicWordCount, entries }) => {
 
     const featuredEntry = entries[entries.length - 1]
 
@@ -41,4 +41,4 @@ const StyledLoggedEntry = styled.div`
    padding-top: 1rem;  
 `
 
-export default OverviewTopics
+export default OverviewTopic

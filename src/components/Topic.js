@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import topics from '../topics.json'
 // components
 import LoggedEntry from './LoggedEntry'
-import NewEntry from './NewEntry'
+import AddEntry from './AddEntry'
 
 const Topic = ({ topicTitle, topicWordCount, entries }) => {
 
@@ -22,7 +22,7 @@ const Topic = ({ topicTitle, topicWordCount, entries }) => {
                     return <LoggedEntry date={entry.date} tags={entry.tags} entryWordCount={entry.wordCount} text={entry.text} />
                 })}
             </StyledLoggedEntry>
-            <NewEntry />
+            <AddEntry />
         </StyledTopic>
     )
 }
