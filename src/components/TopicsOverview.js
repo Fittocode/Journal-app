@@ -6,11 +6,21 @@ import styled from 'styled-components'
 import AddTopic from './AddTopic'
 import OverviewTopic from './OverviewTopic'
 
-const TopicsOverview = ({ topics }) => {
+const TopicsOverview = ({ topicsList }) => {
 
+    const [topics, setTopics] = useState(topicsList)
     const [addTopic, setAddTopic] = useState(false)
 
     const addTopicToggle = () => {
+        setAddTopic(!addTopic)
+    }
+
+    const addTopicHandler = (topic) => {
+        const topicsCopy = topics
+        topicsCopy.push(topic)
+        console.log(topic)
+        console.log(topicsCopy)
+        setTopics(topicsCopy)
         setAddTopic(!addTopic)
 
     }
@@ -21,7 +31,7 @@ const TopicsOverview = ({ topics }) => {
                 <StyledHeadline>Recent/All Topics</StyledHeadline>
                 <StyledHeadline><button onClick={addTopicToggle}>Add Topic</button></StyledHeadline>
             </StyledFirstRow>
-            {(addTopic) ? <AddTopic /> : null}
+            {(addTopic) ? <AddTopic clickToAdd={addTopicHandler} /> : null}
             {topics.map(topic => {
                 return <OverviewTopic topicTitle={topic.topicTitle} topicWordCount={topic.topicWordCount} entries={topic.entries} />
             })}

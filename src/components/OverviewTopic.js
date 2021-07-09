@@ -6,22 +6,28 @@ import LoggedEntry from './LoggedEntry'
 
 const OverviewTopic = ({ topicTitle, topicWordCount, entries }) => {
 
-    const featuredEntry = entries[entries.length - 1]
+    let featuredEntry = entries
+
+    if (entries.length > 1) featuredEntry = entries[entries.length - 1]
+
+    console.log(entries)
 
     return (
         <StyledTopic>
             <StyledFirstRow>
                 <h2>{topicTitle} </h2>
                 <span>Entries: {entries.length}</span>
-                <span>Created: {entries[0].date}</span>
+                {/* <span>Created: {entries[0].date}</span> */}
                 <span>{topicWordCount} total words</span>
             </StyledFirstRow>
             <StyledLoggedEntry>
-                <LoggedEntry date={featuredEntry.date} tags={featuredEntry.tags} entryWordCount={featuredEntry.wordCount} text={featuredEntry.text} />
+                <LoggedEntry date={featuredEntry.date} tags={featuredEntry.tags} text={featuredEntry.text} />
             </StyledLoggedEntry>
         </StyledTopic>
     )
 }
+
+// entryWordCount={featuredEntry.wordCount}
 
 const StyledTopic = styled.div`
     padding-top: 1rem;

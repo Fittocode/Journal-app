@@ -12,14 +12,14 @@ import TopicsOverview from './components/TopicsOverview'
 
 const IndexPage = () => {
 
-  const [topics, setTopics] = useState(topicsJSON)
+  const [topicsList, setTopics] = useState(topicsJSON)
 
   return (
     <div>
       <GlobalStyle />
       <Navbar />
-      <Library title={'Featured Topics'} />
-      <TopicsOverview topics={topics} />
+      {/* <Library title={'Featured Topics'} /> */}
+      <TopicsOverview topicsList={topicsList} />
     </div>
   )
 }
