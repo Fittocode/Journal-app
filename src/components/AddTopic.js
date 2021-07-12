@@ -26,10 +26,18 @@ class AddTopic extends Component {
 
     handleEntriesInput = (event) => {
         const name = event.target.name
+        const tagsValues = () => {
+            if (event.target.value.includes(',')) {
+                let tagsArray = event.target.value.split(',')
+                return tagsArray
+            } else {
+                return event.target.value
+            }
+        }
         this.setState({
             entries: {
                 ...this.state.entries,
-                [name]: event.target.value
+                [name]: tagsValues()
             }
         })
         console.log(this.state.entries)

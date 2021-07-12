@@ -2,18 +2,21 @@ import React from 'react'
 // style
 import styled from 'styled-components'
 
-const LoggedEntry = ({ date, tags, entryWordCount, text }) => {
+const LoggedEntry = ({ date, tags, text, wordCount }) => {
+
+    console.log(tags)
+
     return (
         <StyledSub>
             <hr />
             <StyledFirstRow>
                 <span>{date}</span>
-                <span>{entryWordCount} words</span>
+                <span>{wordCount} words</span>
             </StyledFirstRow>
             <br />
-            <StyledTag>{tags.map(tag => {
-                return ` #${tag}`
-            })}</StyledTag>
+            <StyledTag>{(tags.length > 1 && typeof tags === 'object') ? tags.map(tag => {
+                return `#${tag} `
+            }) : `#${tags}`}</StyledTag>
             <br />
             <p>{text}</p>
             <br />
