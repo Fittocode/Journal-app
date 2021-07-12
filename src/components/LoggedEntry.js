@@ -18,14 +18,14 @@ const LoggedEntry = ({ date, tags, text, wordCount }) => {
             <hr />
             <StyledFirstRow>
                 <span>{(date === '') ? newdate : date}</span>
-                <span>{wordCount} words</span>
+                <span>{(text === '') ? 7 : wordCount} words</span>
             </StyledFirstRow>
             <br />
-            <StyledTag>{(tags.length > 1 && typeof tags === 'object') ? tags.map(tag => {
+            <StyledTag>{(tags.length === 0) ? '#empty' : (tags.length > 1 && typeof tags === 'object') ? tags.map(tag => {
                 return `#${tag} `
             }) : `#${tags}`}</StyledTag>
             <br />
-            <p>{text}</p>
+            <p>{(text === '') ? 'Whoops, you forgot to add some thoughts!' : text}</p>
             <br />
             <br />
             <button>Hide Entry</button>

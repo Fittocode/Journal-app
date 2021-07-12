@@ -19,7 +19,7 @@ const OverviewTopic = ({ topicTitle, topicWordCount, entries }) => {
     return (
         <StyledTopic>
             <StyledFirstRow>
-                <h2>{topicTitle} </h2>
+                <h2>{(topicTitle === '') ? 'Untitled' : topicTitle} </h2>
                 <span>Entries: {(entries[entries.length - 1]) ? entries.length : 1}</span>
                 {/* <span>Created: {entries[0].date}</span> */}
                 <span>{entryWordCount(featuredEntry.text).length} total words</span>
