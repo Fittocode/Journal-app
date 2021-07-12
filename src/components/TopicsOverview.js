@@ -17,11 +17,14 @@ const TopicsOverview = ({ topicsList }) => {
 
     const addTopicHandler = (topic) => {
         const topicsCopy = topics
+
         topicsCopy.push(topic)
-        console.log(topic)
-        console.log(topicsCopy)
+
         setTopics(topicsCopy)
         setAddTopic(!addTopic)
+    }
+
+    const deleteTopic = () => {
 
     }
 
@@ -32,11 +35,10 @@ const TopicsOverview = ({ topicsList }) => {
                 <StyledHeadline><button onClick={addTopicToggle}>{(!addTopic) ? 'Add Topic' : 'Hide Add Topic'}</button></StyledHeadline>
             </StyledFirstRow>
             {(addTopic) ? <AddTopic clickToAdd={addTopicHandler} /> : null}
-            {topics.map(topic => {
-                return <OverviewTopic topicTitle={topic.topicTitle} topicWordCount={topic.topicWordCount} entries={topic.entries} />
+            {topics.map((topic, index) => {
+                return <OverviewTopic key={index} topicTitle={topic.topicTitle} topicWordCount={topic.topicWordCount} entries={topic.entries} />
             })}
         </div>
-
     )
 }
 

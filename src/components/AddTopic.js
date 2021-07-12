@@ -35,6 +35,16 @@ class AddTopic extends Component {
         console.log(this.state.entries)
     }
 
+    handleDateInput = (event) => {
+        const name = event.target.name
+        this.setState({
+            entries: {
+                ...this.state.entries,
+                [name]: event.target.value
+            }
+        })
+    }
+
     handleTagsInput = (event) => {
         const name = event.target.name
         const tagsValues = () => {
@@ -79,7 +89,7 @@ class AddTopic extends Component {
                     </label>
                     <label>
                         Date Created:
-                        <input name="date" type="text" value={this.state.entries.date} onChange={this.handleEntriesInput} placeholder="Month/Day/Year"></input>
+                        <input name="date" type="text" value={this.state.entries.date} onChange={this.handleDateInput} placeholder="Month/Day/Year"></input>
                     </label>
                     <div>
                         <br />
@@ -94,6 +104,7 @@ class AddTopic extends Component {
                     <label>
                         Entry keywords:
                         <input name="tags" type="text" value={this.state.entries.tags} onChange={this.handleTagsInput}></input>
+                        (Use commas with no spaces to separate tags)
                     </label>
                     <div>
                         <br />

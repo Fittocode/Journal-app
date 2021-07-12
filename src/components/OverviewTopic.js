@@ -14,7 +14,7 @@ const OverviewTopic = ({ topicTitle, topicWordCount, entries }) => {
         return text.split(' ')
     }
 
-    console.log(featuredEntry)
+    console.log(typeof featuredEntry.date)
 
     return (
         <StyledTopic>
