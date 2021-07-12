@@ -26,6 +26,17 @@ class AddTopic extends Component {
 
     handleEntriesInput = (event) => {
         const name = event.target.name
+        this.setState({
+            entries: {
+                ...this.state.entries,
+                [name]: event.target.value
+            }
+        })
+        console.log(this.state.entries)
+    }
+
+    handleTagsInput = (event) => {
+        const name = event.target.name
         const tagsValues = () => {
             if (event.target.value.includes(',')) {
                 let tagsArray = event.target.value.split(',')
@@ -40,7 +51,7 @@ class AddTopic extends Component {
                 [name]: tagsValues()
             }
         })
-        console.log(this.state.entries)
+
     }
 
 
@@ -82,7 +93,7 @@ class AddTopic extends Component {
                     </div>
                     <label>
                         Entry keywords:
-                        <input name="tags" type="text" value={this.state.entries.tags} onChange={this.handleEntriesInput}></input>
+                        <input name="tags" type="text" value={this.state.entries.tags} onChange={this.handleTagsInput}></input>
                     </label>
                     <div>
                         <br />

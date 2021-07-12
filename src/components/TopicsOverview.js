@@ -29,7 +29,7 @@ const TopicsOverview = ({ topicsList }) => {
         <div>
             <StyledFirstRow>
                 <StyledHeadline>Recent/All Topics</StyledHeadline>
-                <StyledHeadline><button onClick={addTopicToggle}>Add Topic</button></StyledHeadline>
+                <StyledHeadline><button onClick={addTopicToggle}>{(!addTopic) ? 'Add Topic' : 'Hide Add Topic'}</button></StyledHeadline>
             </StyledFirstRow>
             {(addTopic) ? <AddTopic clickToAdd={addTopicHandler} /> : null}
             {topics.map(topic => {
