@@ -1,45 +1,49 @@
 // Step 1: Import React
-import { React, useState } from 'react'
+import { render } from '@testing-library/react'
+import React, { Component, useState } from 'react'
 // style
 import styled from 'styled-components'
 // components
 import AddTopic from './AddTopic'
 import OverviewTopic from './OverviewTopic'
 
-const TopicsOverview = ({ topicsList }) => {
-
-    const [topics, setTopics] = useState(topicsList)
-    const [addTopic, setAddTopic] = useState(false)
-
-    const addTopicToggle = () => {
-        setAddTopic(!addTopic)
+class TopicsOverview extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            search: ''
+        }
     }
 
-    const addTopicHandler = (topic) => {
-        const topicsCopy = topics
-
-        topicsCopy.push(topic)
-
-        setTopics(topicsCopy)
-        setAddTopic(!addTopic)
+    handleChange = (event) => {
+        this.setState({
+            search: event.target.value
+        })
     }
 
-    const deleteTopic = () => {
+    render() {
 
+        let filteredTopics = this.props.topicsList.filter((topicItem) => {
+            return topicItem.topicTitle.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+        })
+
+        return (
+            <div>
+                <form>
+                    <label htmlFor="search">Search</label>
+                    <input type="text" value={this.state.search} onChange={this.handleChange} />
+                </form>
+                <StyledFirstRow>
+                    <StyledHeadline>Recent/All Topics</StyledHeadline>
+                    <StyledHeadline><button onClick={this.props.addTopicToggle}>{(!this.props.addTopic) ? 'Add Topic' : 'Hide Add Topic'}</button></StyledHeadline>
+                </StyledFirstRow>
+                {(this.props.addTopic) ? <AddTopic clickToAdd={this.props.addTopicHandler} /> : null}
+                {filteredTopics.map((topic, index) => {
+                    return <OverviewTopic key={index} topicTitle={topic.topicTitle} topicWordCount={topic.topicWordCount} entries={topic.entries} />
+                })}
+            </div>
+        )
     }
-
-    return (
-        <div>
-            <StyledFirstRow>
-                <StyledHeadline>Recent/All Topics</StyledHeadline>
-                <StyledHeadline><button onClick={addTopicToggle}>{(!addTopic) ? 'Add Topic' : 'Hide Add Topic'}</button></StyledHeadline>
-            </StyledFirstRow>
-            {(addTopic) ? <AddTopic clickToAdd={addTopicHandler} /> : null}
-            {topics.map((topic, index) => {
-                return <OverviewTopic key={index} topicTitle={topic.topicTitle} topicWordCount={topic.topicWordCount} entries={topic.entries} />
-            })}
-        </div>
-    )
 }
 
 const StyledHeadline = styled.h2`

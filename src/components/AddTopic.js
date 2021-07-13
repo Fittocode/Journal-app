@@ -90,6 +90,7 @@ class AddTopic extends Component {
                     <label>
                         Date Created:
                         <input name="date" type="text" value={this.state.entries.date} onChange={this.handleDateInput} placeholder="Month/Day/Year"></input>
+                        Leave blank for today's date
                     </label>
                     <div>
                         <br />

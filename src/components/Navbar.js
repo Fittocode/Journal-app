@@ -5,7 +5,10 @@ import styled from 'styled-components'
 const Navbar = () => {
     return (
         <StyledNavbar>
-
+            <form>
+                <label htmlFor="search">search</label>
+                <input type="text" />
+            </form>
         </StyledNavbar>
     )
 }

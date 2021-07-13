@@ -1,27 +1,15 @@
 // Step 1: Import React
-import { React, useState } from 'react'
-// style
-import styled from 'styled-components'
-import GlobalStyle from './components/GlobalStyle'
-// JSON
-import topicsJSON from './topics.json'
+import { React } from 'react'
 // components
-import Navbar from './components/Navbar'
-import Library from './components/Library'
-import TopicsOverview from './components/TopicsOverview'
+import DynamicTopics from './components/DynamicTopics'
 
-const IndexPage = () => {
-
-  const [topicsList, setTopics] = useState(topicsJSON)
+const App = () => {
 
   return (
     <div>
-      <GlobalStyle />
-      <Navbar />
-      {/* <Library title={'Featured Topics'} /> */}
-      <TopicsOverview topicsList={topicsList} />
+      <DynamicTopics />
     </div>
   )
 }
 
-export default IndexPage
+export default App
