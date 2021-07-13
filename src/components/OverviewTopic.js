@@ -14,8 +14,6 @@ const OverviewTopic = ({ topicTitle, topicWordCount, entries }) => {
         return text.split(' ')
     }
 
-    console.log(typeof featuredEntry.date)
-
     return (
         <StyledTopic>
             <StyledFirstRow>

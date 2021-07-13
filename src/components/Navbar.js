@@ -9,9 +9,17 @@ class Navbar extends Component {
             <StyledNavbar>
                 <form>
                     <StyledLabel>
-                        <label htmlFor="search">Search</label>
+                        <label htmlFor="search">Search by:</label>
                     </StyledLabel>
-                    <input type="text" value={this.props.search} onChange={this.props.handleSearchChange} />
+                    <StyledLabel>
+                        <select value={this.props.selectorValue} onChange={this.props.handleSelectorChange}>
+                            <option value="title">Title</option>
+                            <option value="keyword">Keyword</option>
+                        </select>
+                    </StyledLabel>
+                    <StyledLabel>
+                        <input type="text" value={this.props.search} onChange={this.props.handleSearchChange} />
+                    </StyledLabel>
                 </form>
             </StyledNavbar>
         )

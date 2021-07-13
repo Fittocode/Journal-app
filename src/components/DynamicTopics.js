@@ -11,13 +11,6 @@ function DynamicTopics() {
     const [topics, setTopics] = useState(topicsJSON)
     const [addTopic, setAddTopic] = useState(false)
 
-    // filter out all topics except topics with search keyword
-    const searchTopics = (index) => {
-        setTopics(topics.filter((topic, i) => {
-            return i !== index
-        }))
-    }
-
     // show/hide add topics form
     const addTopicToggle = () => {
         setAddTopic(!addTopic)

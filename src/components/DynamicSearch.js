@@ -7,7 +7,8 @@ class DynamicSearch extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            search: ''
+            search: '',
+            selectorValue: 'title'
         }
     }
 
@@ -17,12 +18,18 @@ class DynamicSearch extends Component {
         })
     }
 
+    handleSelectorChange = (event) => {
+        this.setState({
+            selectorValue: event.target.value
+        })
+    }
+
     render() {
         return (
             <div>
-                <Navbar handleSearchChange={this.handleSearchChange} search={this.state.search} />
+                <Navbar handleSearchChange={this.handleSearchChange} search={this.state.search} selectorValue={this.state.selectorValue} handleSelectorChange={this.handleSelectorChange} />
                 {/* <Library title={'Featured Topics'} /> */}
-                <TopicsOverview topicsList={this.props.topicsList} addTopicToggle={this.props.addTopicToggle} addTopicHandler={this.props.addTopicHandler} addTopic={this.props.addTopic} search={this.state.search} />
+                <TopicsOverview topicsList={this.props.topicsList} addTopicToggle={this.props.addTopicToggle} addTopicHandler={this.props.addTopicHandler} addTopic={this.props.addTopic} search={this.state.search} selectorValue={this.state.selectorValue} />
             </div>
         )
     }
