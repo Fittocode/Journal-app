@@ -5,9 +5,7 @@ import GlobalStyle from './GlobalStyle'
 // JSON
 import topicsJSON from '../topics.json'
 // components
-import Navbar from './Navbar'
-import Library from './Library'
-import TopicsOverview from './TopicsOverview'
+import DynamicSearch from './DynamicSearch'
 
 function DynamicTopics() {
     const [topics, setTopics] = useState(topicsJSON)
@@ -42,9 +40,7 @@ function DynamicTopics() {
     return (
         <div>
             <GlobalStyle />
-            <Navbar searchTopics={searchTopics} />
-            {/* <Library title={'Featured Topics'} /> */}
-            <TopicsOverview topicsList={topics} addTopicToggle={addTopicToggle} addTopicHandler={addTopicHandler} addTopic={addTopic} />
+            <DynamicSearch topicsList={topics} addTopicToggle={addTopicToggle} addTopicHandler={addTopicHandler} addTopic={addTopic} />
         </div>
     )
 }

@@ -8,31 +8,15 @@ import AddTopic from './AddTopic'
 import OverviewTopic from './OverviewTopic'
 
 class TopicsOverview extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            search: ''
-        }
-    }
-
-    handleChange = (event) => {
-        this.setState({
-            search: event.target.value
-        })
-    }
 
     render() {
-
+        console.log(this.props.topicsList)
         let filteredTopics = this.props.topicsList.filter((topicItem) => {
-            return topicItem.topicTitle.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+            return topicItem.topicTitle.toLowerCase().indexOf(this.props.search.toLowerCase()) !== -1
         })
 
         return (
             <div>
-                <form>
-                    <label htmlFor="search">Search</label>
-                    <input type="text" value={this.state.search} onChange={this.handleChange} />
-                </form>
                 <StyledFirstRow>
                     <StyledHeadline>Recent/All Topics</StyledHeadline>
                     <StyledHeadline><button onClick={this.props.addTopicToggle}>{(!this.props.addTopic) ? 'Add Topic' : 'Hide Add Topic'}</button></StyledHeadline>
