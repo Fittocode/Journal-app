@@ -10,13 +10,23 @@ import OverviewTopic from './OverviewTopic'
 class TopicsOverview extends Component {
 
     filterByKeyword = (topic) => {
-        for (let i = 0; i < topic.entries.length; i++) {
-            console.log(topic.entries[i])
-            for (let j = 0; j < topic.entries[i].tags.length; j++) {
-                console.log(topic.entries[i].tags[j])
+        console.log('called!')
+        console.log(topic.entries.length)
+        if (topic.entries.length >= 1) {
+            for (let i = 0; i < topic.entries.length; i++) {
+                console.log(topic.entries[i])
+                for (let j = 0; j < topic.entries[i].tags.length; j++) {
+                    console.log(topic.entries[i].tags[j])
 
-                if (topic.entries[i].tags[j] === this.props.search) {
-                    return topic.entries[i].tags[j].indexOf(this.props.search) !== -1
+                    if (topic.entries[i].tags[j].includes(this.props.search)) {
+                        return topic.entries[i].tags[j].indexOf(this.props.search) !== -1
+                    }
+                }
+            }
+        } else {
+            for (let i = 0; i < topic.entries.tags.length; i++) {
+                if (topic.entries.tags[i].includes(this.props.search)) {
+                    return topic.entries.tags[i].indexOf(this.props.search) !== -1
                 }
             }
         }
@@ -24,10 +34,8 @@ class TopicsOverview extends Component {
 
     render() {
         let filteredTopics = this.props.topicsList.filter((topicItem) => {
-            console.log(this.props.selectorValue)
-            console.log(topicItem.entries)
-            console.log(topicItem)
             // determine if searching by title or by keyword,
+            console.log(topicItem)
             return (this.props.selectorValue === 'title') ? topicItem.topicTitle.toLowerCase().indexOf(this.props.search) !== -1 : this.filterByKeyword(topicItem)
         })
 
