@@ -8,45 +8,51 @@ class AddTopic extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            topicTitle: '',
+            topicTitle: 'Untitled',
             entries: {
-                date: '',
-                tags: [],
-                text: ''
+                date: this.defaultDate(),
+                tags: ['uninspired'],
+                text: `...`
             }
         }
     }
 
+    defaultDate = () => {
+        var dateObj = new Date();
+        var month = dateObj.getUTCMonth() + 1; //months from 1-12
+        var day = dateObj.getUTCDate();
+        var year = dateObj.getUTCFullYear();
+
+        let newdate = month + "/" + day + "/" + year;
+        return newdate
+    }
+
     handleTopicInput = (event) => {
-        const name = event.target.name
         this.setState({
-            [name]: event.target.value,
+            topicTitle: event.target.value,
         })
     }
 
-    handleEntriesInput = (event) => {
-        const name = event.target.name
+    handleTextInput = (event) => {
         this.setState({
             entries: {
                 ...this.state.entries,
-                [name]: event.target.value
+                text: event.target.value
             }
         })
         console.log(this.state.entries)
     }
 
     handleDateInput = (event) => {
-        const name = event.target.name
         this.setState({
             entries: {
                 ...this.state.entries,
-                [name]: event.target.value
+                date: event.target.value
             }
         })
     }
 
     handleTagsInput = (event) => {
-        const name = event.target.name
         const tagsValues = () => {
             if (event.target.value.includes(',')) {
                 let tagsArray = event.target.value.split(',')
@@ -58,7 +64,7 @@ class AddTopic extends Component {
         this.setState({
             entries: {
                 ...this.state.entries,
-                [name]: tagsValues()
+                tags: tagsValues()
             }
         })
 
@@ -98,7 +104,7 @@ class AddTopic extends Component {
                         <br />
                         {/* <ReactQuill value={state.text || ""}
                             onChange={(e) => handleChange(e)} /> */}
-                        <textarea name="text" type="text" value={this.state.entries.text} onChange={this.handleEntriesInput} placeholder="What's on your mind?" cols="100" rows="10" />
+                        <textarea name="text" type="text" value={this.state.entries.text} onChange={this.handleTextInput} placeholder="What's on your mind?" cols="100" rows="10" />
 
                         <br />
                     </div>

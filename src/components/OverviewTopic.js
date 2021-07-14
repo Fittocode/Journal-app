@@ -4,11 +4,28 @@ import styled from 'styled-components'
 // components
 import LoggedEntry from './LoggedEntry'
 
-const OverviewTopic = ({ topicTitle, topicWordCount, entries }) => {
+const OverviewTopic = ({ topicTitle, entries }) => {
 
     let featuredEntry = entries
 
     if (entries.length > 1) featuredEntry = entries[entries.length - 1]
+
+    const calculateWordLength = (entries) => {
+        let wordLength = 0
+        console.log(entries)
+        if (entries.length > 1) {
+            entries.map((entry) => {
+                return wordLength += entry.text.split(' ').length
+            })
+            return wordLength
+        } else {
+            if (entries.text.split(' ').length === 1) {
+                return 1
+            } else {
+                return entries.text.split(' ').length
+            }
+        }
+    }
 
     const entryWordCount = (text) => {
         return text.split(' ')
@@ -16,12 +33,14 @@ const OverviewTopic = ({ topicTitle, topicWordCount, entries }) => {
 
     return (
         <StyledTopic>
-            <StyledFirstRow>
-                <h2>{(topicTitle === '') ? 'Untitled' : topicTitle} </h2>
-                <span>Entries: {(entries[entries.length - 1]) ? entries.length : 1}</span>
+            <StyledRow>
+                <StyledTitle>
+                    <h2>{topicTitle} </h2>
+                </StyledTitle>
+                <StyledEntry>Entries: {(entries[entries.length - 1]) ? entries.length : 1}</StyledEntry>
                 {/* <span>Created: {entries[0].date}</span> */}
-                <span>{entryWordCount(featuredEntry.text).length} total words</span>
-            </StyledFirstRow>
+                <span>{(calculateWordLength(entries) === 1) ? `1 word` : `${calculateWordLength(entries)} total words`}</span>
+            </StyledRow>
             <StyledLoggedEntry>
                 <LoggedEntry date={featuredEntry.date} tags={featuredEntry.tags} text={featuredEntry.text} wordCount={entryWordCount(featuredEntry.text).length} />
             </StyledLoggedEntry>
@@ -33,15 +52,26 @@ const OverviewTopic = ({ topicTitle, topicWordCount, entries }) => {
 
 const StyledTopic = styled.div`
     padding-top: 1rem;
-    margin-right: 5%;
+    margin-right: 20%;
     margin-left: 20%;
 `
 
-const StyledFirstRow = styled.div`
-    padding-top: 1rem;
+const StyledRow = styled.div`
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
+`
+
+const StyledTitle = styled.div`
+    padding-top: 1rem;
+    display: flex;
+    align-items: flex-end;
+`
+
+const StyledEntry = styled.div`
+    padding-left: 1rem;
+    display: flex;
+    align-items: flex-end;
 `
 
 const StyledLoggedEntry = styled.div`

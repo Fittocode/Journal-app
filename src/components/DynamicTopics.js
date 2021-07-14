@@ -26,10 +26,6 @@ function DynamicTopics() {
         setAddTopic(!addTopic)
     }
 
-    const deleteTopic = () => {
-
-    }
-
     return (
         <div>
             <GlobalStyle />
