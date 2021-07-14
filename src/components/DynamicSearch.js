@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
+// components
 import Navbar from './Navbar'
 import Library from './LibrarySideBar/Library'
 import TopicsOverview from './OverviewOfTopics/TopicsOverview'
@@ -23,6 +24,7 @@ class DynamicSearch extends Component {
             selectorValue: event.target.value
         })
     }
+
 
     render() {
         return (

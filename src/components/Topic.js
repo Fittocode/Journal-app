@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import topics from '../topics.json'
 // components
-import LoggedEntry from './LoggedEntry'
+import LoggedEntry from '../components/OverviewOfTopics/LoggedEntry'
 import AddEntry from './AddEntry'
 
 const Topic = ({ topicTitle, topicWordCount, entries }) => {

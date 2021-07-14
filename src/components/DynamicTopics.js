@@ -1,7 +1,5 @@
 // Step 1: Import React
 import { React, useState } from 'react'
-// style
-import GlobalStyle from './GlobalStyle'
 // JSON
 import topicsJSON from '../topics.json'
 // components
@@ -28,7 +26,6 @@ function DynamicTopics() {
 
     return (
         <div>
-            <GlobalStyle />
             <DynamicSearch topicsList={topics} addTopicToggle={addTopicToggle} addTopicHandler={addTopicHandler} addTopic={addTopic} />
         </div>
     )

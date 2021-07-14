@@ -4,13 +4,6 @@ import styled from 'styled-components'
 
 const LoggedEntry = ({ date, tags, text, wordCount }) => {
 
-    var dateObj = new Date();
-    var month = dateObj.getUTCMonth() + 1; //months from 1-12
-    var day = dateObj.getUTCDate();
-    var year = dateObj.getUTCFullYear();
-
-    let newdate = month + "/" + day + "/" + year;
-
     return (
         <StyledSub>
             <hr />
@@ -40,7 +33,7 @@ const StyledFirstRow = styled.div`
 `
 
 const StyledTag = styled.div`
-    color: #1EA48C;
+    color: #16caa9;
 `
 
 export default LoggedEntry

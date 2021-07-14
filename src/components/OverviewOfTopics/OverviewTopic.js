@@ -3,10 +3,18 @@ import React from 'react'
 import styled from 'styled-components'
 // components
 import LoggedEntry from './LoggedEntry'
+// Router
+import { Link } from 'react-router-dom'
 
 const OverviewTopic = ({ topicTitle, entries }) => {
 
     let featuredEntry = entries
+
+    const topicURL = (topicTitle) => {
+        return topicTitle.split(' ').join('-')
+    }
+
+    console.log(topicURL(topicTitle))
 
     if (entries.length > 1) featuredEntry = entries[entries.length - 1]
 
@@ -35,7 +43,7 @@ const OverviewTopic = ({ topicTitle, entries }) => {
         <StyledTopic>
             <StyledRow>
                 <StyledTitle>
-                    <h2>{topicTitle} </h2>
+                    <Link to={`/${topicURL(topicTitle)}`} className="text-placeholder"><h2>{topicTitle}</h2></Link>
                 </StyledTitle>
                 <StyledEntry>Entries: {(entries[entries.length - 1]) ? entries.length : 1}</StyledEntry>
                 {/* <span>Created: {entries[0].date}</span> */}
@@ -44,11 +52,9 @@ const OverviewTopic = ({ topicTitle, entries }) => {
             <StyledLoggedEntry>
                 <LoggedEntry date={featuredEntry.date} tags={featuredEntry.tags} text={featuredEntry.text} wordCount={entryWordCount(featuredEntry.text).length} />
             </StyledLoggedEntry>
-        </StyledTopic>
+        </StyledTopic >
     )
 }
-
-// entryWordCount={featuredEntry.wordCount}
 
 const StyledTopic = styled.div`
     padding-top: 1rem;

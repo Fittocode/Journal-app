@@ -5,8 +5,15 @@ import styled from 'styled-components'
 // components
 import AddTopic from './AddTopic'
 import OverviewTopic from './OverviewTopic'
+import Topic from '../Topic'
+// Router
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 class TopicsOverview extends Component {
+
+    topicURL = (topicTitle) => {
+        return topicTitle.split(' ').join('-')
+    }
 
     filterByKeyword = (topic) => {
         let searchInput = this.props.search.toLowerCase()
@@ -59,9 +66,20 @@ class TopicsOverview extends Component {
                     <StyledHeadline><button onClick={this.props.addTopicToggle}>{(!this.props.addTopic) ? 'Add Topic' : 'Hide Add Topic'}</button></StyledHeadline>
                 </StyledFirstRow>
                 {(this.props.addTopic) ? <AddTopic clickToAdd={this.props.addTopicHandler} /> : null}
-                {filteredTopics.map((topic, index) => {
-                    return <OverviewTopic key={index} topicTitle={topic.topicTitle} topicWordCount={topic.topicWordCount} entries={topic.entries} />
-                })}
+                <Router>
+                    <Switch>
+                        <Route path={'/'}>
+                            {filteredTopics.map((topic, index) => {
+                                return <OverviewTopic key={index} topicTitle={topic.topicTitle} topicWordCount={topic.topicWordCount} entries={topic.entries} />
+                            })}
+                        </Route>
+                        {filteredTopics.map((topic, index) => {
+                            return <Route path={`/${this.topicURL(topic.topicTitle)}`} key={index}>
+                                <h1>{topic.topicTitle}</h1>
+                            </Route>
+                        })}
+                    </Switch>
+                </Router>
             </div>
         )
     }
