@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from './Navbar'
-import Library from './Library'
-import TopicsOverview from './TopicsOverview'
+import Library from './LibrarySideBar/Library'
+import TopicsOverview from './OverviewOfTopics/TopicsOverview'
 
 class DynamicSearch extends Component {
     constructor(props) {
