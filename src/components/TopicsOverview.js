@@ -1,6 +1,5 @@
 // Step 1: Import React
-import { render } from '@testing-library/react'
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 // style
 import styled from 'styled-components'
 // components
@@ -10,24 +9,39 @@ import OverviewTopic from './OverviewTopic'
 class TopicsOverview extends Component {
 
     filterByKeyword = (topic) => {
-        console.log('called!')
-        console.log(topic.entries.length)
+        let searchInput = this.props.search.toLowerCase()
         if (topic.entries.length >= 1) {
             for (let i = 0; i < topic.entries.length; i++) {
-                console.log(topic.entries[i])
                 for (let j = 0; j < topic.entries[i].tags.length; j++) {
-                    console.log(topic.entries[i].tags[j])
-
-                    if (topic.entries[i].tags[j].includes(this.props.search)) {
-                        return topic.entries[i].tags[j].indexOf(this.props.search) !== -1
+                    let topicEntryTags = topic.entries[i].tags[j].toLowerCase()
+                    if (topicEntryTags.includes(searchInput)) {
+                        return topicEntryTags.indexOf(searchInput) !== -1
                     }
                 }
             }
         } else {
             for (let i = 0; i < topic.entries.tags.length; i++) {
-                if (topic.entries.tags[i].includes(this.props.search)) {
-                    return topic.entries.tags[i].indexOf(this.props.search) !== -1
+                let topicTags = topic.entries.tags[i].toLowerCase()
+                if (topicTags.includes(searchInput)) {
+                    return topicTags.indexOf(searchInput) !== -1
                 }
+            }
+        }
+    }
+
+    filterByContent = (topic) => {
+        let searchInput = this.props.search.toLowerCase()
+        if (topic.entries.length >= 1) {
+            for (let i = 0; i < topic.entries.length; i++) {
+                let topicText = topic.entries[i].text.toLowerCase()
+                if (topicText.includes(searchInput)) {
+                    return topicText.toLowerCase().indexOf(searchInput) !== -1
+                }
+            }
+        } else {
+            let topicEntryText = topic.entries.text.toLowerCase()
+            if (topicEntryText.includes(searchInput)) {
+                return topicEntryText.indexOf(searchInput) !== -1
             }
         }
     }
@@ -36,7 +50,7 @@ class TopicsOverview extends Component {
         let filteredTopics = this.props.topicsList.filter((topicItem) => {
             // determine if searching by title or by keyword,
             console.log(topicItem)
-            return (this.props.selectorValue === 'title') ? topicItem.topicTitle.toLowerCase().indexOf(this.props.search) !== -1 : this.filterByKeyword(topicItem)
+            return (this.props.selectorValue === 'title') ? topicItem.topicTitle.toLowerCase().indexOf(this.props.search.toLowerCase()) !== -1 : (this.props.selectorValue === 'content') ? this.filterByContent(topicItem) : this.filterByKeyword(topicItem)
         })
 
         return (

@@ -14,6 +14,7 @@ class Navbar extends Component {
                     <StyledLabel>
                         <select value={this.props.selectorValue} onChange={this.props.handleSelectorChange}>
                             <option value="title">Title</option>
+                            <option value="content">Content</option>
                             <option value="keyword">Keyword</option>
                         </select>
                     </StyledLabel>
