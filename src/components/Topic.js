@@ -5,22 +5,24 @@ import styled from 'styled-components'
 import LoggedEntry from '../components/OverviewOfTopics/LoggedEntry'
 import AddEntry from './AddEntry'
 
-const Topic = ({ topicTitle, calculateWordCount, entries }) => {
+const Topic = ({ topic, calculateWordCount, entries, addEntryHandler }) => {
+
+    console.log(entries)
 
     return (
         <StyledTopic>
             <StyledFirstRow>
-                <StyledTitle>{topicTitle} </StyledTitle>
+                <StyledTitle>{topic.topicTitle} </StyledTitle>
                 <span>{calculateWordCount(entries)} total words</span>
             </StyledFirstRow>
             <StyledLoggedEntry>
                 {(entries.length > 1 && typeof entries === 'object') ?
                     entries.map((entry, index) => {
-                        console.log()
+                        console.log(entry)
                         return <LoggedEntry key={index} date={entry.date} tags={entry.tags} wordCount={calculateWordCount(entry)} text={entry.text} />
                     }) : <LoggedEntry date={entries.date} tags={entries.tags} wordCount={calculateWordCount(entries)} text={entries.text} />}
             </StyledLoggedEntry>
-            <AddEntry />
+            <AddEntry topic={topic} addEntryHandler={addEntryHandler} />
         </StyledTopic>
     )
 }

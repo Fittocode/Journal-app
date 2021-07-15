@@ -24,9 +24,16 @@ function DynamicTopics() {
         setAddTopic(!addTopic)
     }
 
+    const addEntryHandler = (topic, entry) => {
+        const entriesCopy = topic.entries
+
+        entriesCopy.push(entry)
+
+    }
+
     return (
         <div>
-            <DynamicSearch topicsList={topics} addTopicToggle={addTopicToggle} addTopicHandler={addTopicHandler} addTopic={addTopic} />
+            <DynamicSearch topicsList={topics} addTopicToggle={addTopicToggle} addTopicHandler={addTopicHandler} addEntryHandler={addEntryHandler} addTopic={addTopic} />
         </div>
     )
 }

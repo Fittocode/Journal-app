@@ -15,9 +15,7 @@ class TopicsOverview extends Component {
         return (topicTitle.includes('?')) ? topicTitle.split(' ').join('-').slice(0, topicTitle.length - 1) : topicTitle.split(' ').join('-')
     }
 
-
     calculateWordLength = (entries) => {
-        console.log(entries)
         let wordLength = 0
         if (entries.length > 1 && typeof entries === 'object') {
             entries.map((entry) => {
@@ -72,7 +70,6 @@ class TopicsOverview extends Component {
         }
     }
 
-
     render() {
         let filteredTopics = this.props.topicsList.filter((topicItem) => {
             // determine if searching by title or by keyword,
@@ -95,7 +92,7 @@ class TopicsOverview extends Component {
                         </Route>
                         {this.props.topicsList.map((topic, index) => {
                             return <Route path={`/${this.topicURL(topic.topicTitle)}`} key={index} exact>
-                                <Topic topicTitle={topic.topicTitle} calculateWordCount={this.calculateWordLength} entries={topic.entries} />
+                                <Topic topic={topic} calculateWordCount={this.calculateWordLength} entries={topic.entries} addEntryHandler={this.props.addEntryHandler} />
                             </Route>
                         })}
                     </Switch>

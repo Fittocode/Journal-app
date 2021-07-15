@@ -30,7 +30,7 @@ class DynamicSearch extends Component {
             <div>
                 <Navbar handleSearchChange={this.handleSearchChange} search={this.state.search} selectorValue={this.state.selectorValue} handleSelectorChange={this.handleSelectorChange} />
                 {/* <Library title={'Featured Topics'} /> */}
-                <TopicsOverview topicsList={this.props.topicsList} addTopicToggle={this.props.addTopicToggle} addTopicHandler={this.props.addTopicHandler} addTopic={this.props.addTopic} search={this.state.search} selectorValue={this.state.selectorValue} />
+                <TopicsOverview topicsList={this.props.topicsList} addTopicToggle={this.props.addTopicToggle} addTopicHandler={this.props.addTopicHandler} addEntryHandler={this.props.addEntryHandler} addTopic={this.props.addTopic} search={this.state.search} selectorValue={this.state.selectorValue} />
             </div>
         )
     }

@@ -33,21 +33,12 @@ class AddTopic extends Component {
         })
     }
 
-    handleTextInput = (event) => {
+    handleInput = (event) => {
+        const name = event.target.name
         this.setState({
             entries: {
                 ...this.state.entries,
-                text: event.target.value
-            }
-        })
-        console.log(this.state.entries)
-    }
-
-    handleDateInput = (event) => {
-        this.setState({
-            entries: {
-                ...this.state.entries,
-                date: event.target.value
+                [name]: event.target.value
             }
         })
     }
@@ -67,7 +58,6 @@ class AddTopic extends Component {
                 tags: tagsValues()
             }
         })
-
     }
 
     handleSubmit = (event) => {
@@ -94,7 +84,7 @@ class AddTopic extends Component {
                     </label>
                     <label>
                         Date Created:
-                        <input name="date" type="text" value={this.state.entries.date} onChange={this.handleDateInput} placeholder="Month/Day/Year"></input>
+                        <input name="date" type="text" value={this.state.entries.date} onChange={this.handleInput} placeholder="Month/Day/Year"></input>
                         Leave blank for today's date
                     </label>
                     <div>
@@ -103,7 +93,7 @@ class AddTopic extends Component {
                         <br />
                         {/* <ReactQuill value={state.text || ""}
                             onChange={(e) => handleChange(e)} /> */}
-                        <textarea name="text" type="text" value={this.state.entries.text} onChange={this.handleTextInput} placeholder="What's on your mind?" cols="100" rows="10" />
+                        <textarea name="text" type="text" value={this.state.entries.text} onChange={this.handleInput} placeholder="What's on your mind?" cols="100" rows="10" />
 
                         <br />
                     </div>
