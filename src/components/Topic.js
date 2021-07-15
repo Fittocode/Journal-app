@@ -1,37 +1,41 @@
 import React from 'react'
 // style 
 import styled from 'styled-components'
-import topics from '../topics.json'
 // components
 import LoggedEntry from '../components/OverviewOfTopics/LoggedEntry'
 import AddEntry from './AddEntry'
 
 const Topic = ({ topicTitle, topicWordCount, entries }) => {
 
-    // const entries = topics.entries
-    console.log(topics[0].entries)
+    console.log(topicTitle)
+    console.log(typeof entries)
 
     return (
         <StyledTopic>
             <StyledFirstRow>
-                <h1>{topicTitle} </h1>
+                <StyledTitle>{topicTitle} </StyledTitle>
                 <span>{topicWordCount} words</span>
             </StyledFirstRow>
             <StyledLoggedEntry>
-                {entries.map(entry => {
-                    return <LoggedEntry date={entry.date} tags={entry.tags} entryWordCount={entry.wordCount} text={entry.text} />
-                })}
+                {(entries.length > 1 && typeof entries === 'object') ?
+                    entries.map((entry, index) => {
+                        console.log('I am an object')
+                        return <LoggedEntry key={index} date={entry.date} tags={entry.tags} wordCount={entry.wordCount} text={entry.text} />
+                    }) : <LoggedEntry date={entries.date} tags={entries.tags} wordCount={entries.wordCount} text={entries.text} />}
             </StyledLoggedEntry>
             <AddEntry />
         </StyledTopic>
     )
 }
 
+const StyledTitle = styled.h1`
+    color: #6b23e0;
+`
+
 const StyledTopic = styled.div`
     padding-top: 1rem;
     margin-right: 5%;
     margin-left: 20%;
-
 `
 
 const StyledFirstRow = styled.div`

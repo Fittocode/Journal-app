@@ -1,25 +1,25 @@
 [
     {
-        "topicTitle": "Move to Nashville?",
-        "topicWordCount": 26,
+        "topicTitle": "I love coffee",
+        "topicWordCount": 19,
         "entries": [
             {
                 "date": "7/7/21",
                 "tags": [
-                    "moving",
-                    "uncertain"
+                    "food",
+                    "pleasure"
                 ],
-                "wordCount": 8,
-                "text": "Despite the nibbling, I think I'm making headway"
+                "wordCount": 11,
+                "text": "Coffee is the greatest fuel source devised by man (and woman)"
             },
             {
                 "date": "7/7/21",
                 "tags": [
-                    "moving",
-                    "decisions"
+                    "garlic",
+                    "food"
                 ],
-                "wordCount": 18,
-                "text": "I think I'll visit Bobby end of July to see whether Nashville is a good fit for me."
+                "wordCount": 8,
+                "text": "Garlic is the greatest food condiment ever discovered"
             }
         ]
     }

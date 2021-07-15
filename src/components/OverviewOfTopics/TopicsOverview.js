@@ -73,9 +73,11 @@ class TopicsOverview extends Component {
                                 return <OverviewTopic key={index} topicTitle={topic.topicTitle} topicWordCount={topic.topicWordCount} entries={topic.entries} />
                             })}
                         </Route>
-                        {filteredTopics.map((topic, index) => {
+                        {this.props.topicsList.map((topic, index) => {
+                            console.log(this.topicURL(topic.topicTitle))
+                            console.log(topic.entries)
                             return <Route path={`/${this.topicURL(topic.topicTitle)}`} key={index} exact>
-                                <h1>{topic.topicTitle}</h1>
+                                <Topic topicTitle={topic.topicTitle} topicWordCount={topic.topicWordCount} entries={topic.entries} />
                             </Route>
                         })}
                     </Switch>
@@ -99,15 +101,3 @@ const StyledFirstRow = styled.div`
 
 export default TopicsOverview
 
-//  // if topic with multiple entries and tags
-//  this.retrieveAllTags(topicItem).map((tag) => {
-//     return tag.indexOf(this.props.search) !== -1
-// })
-
-
-
-// topicItem.entries.tags.toLowerCase().indexOf(this.props.search) !== -1
-
-//     : (topicItem.entries.tags.length > 1 && typeof topicItem.entries.tags === Object) ? topicItem.entries.tags.join('').toLowerCase().indexOf(this.props.search) !== -1
-//         // else if topic with one entry and one tag
-//         : topicItem.entries.tags.toLowerCase().indexOf(this.props.search) !== -1

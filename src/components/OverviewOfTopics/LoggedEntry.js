@@ -4,6 +4,8 @@ import styled from 'styled-components'
 
 const LoggedEntry = ({ date, tags, text, wordCount }) => {
 
+    console.log(wordCount)
+
     return (
         <StyledSub>
             <hr />
@@ -17,6 +19,7 @@ const LoggedEntry = ({ date, tags, text, wordCount }) => {
             }) : `#${tags}`}</StyledTag>
             <br />
             <p>{text}</p>
+            <br />
         </StyledSub>
     )
 }

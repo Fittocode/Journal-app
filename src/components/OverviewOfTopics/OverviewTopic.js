@@ -14,8 +14,6 @@ const OverviewTopic = ({ topicTitle, entries }) => {
         return topicTitle.split(' ').join('-')
     }
 
-    console.log(topicURL(topicTitle))
-
     if (entries.length > 1) featuredEntry = entries[entries.length - 1]
 
     const calculateWordLength = (entries) => {
