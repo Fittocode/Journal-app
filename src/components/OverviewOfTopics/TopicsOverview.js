@@ -23,7 +23,6 @@ class TopicsOverview extends Component {
             })
             return wordLength
         } else {
-            console.log(entries.text.split(' ').length)
             if (entries.text.split(' ').length === 1) {
                 return 1
             } else {
@@ -71,6 +70,8 @@ class TopicsOverview extends Component {
     }
 
     render() {
+
+        console.log(this.props.topicsList)
         let filteredTopics = this.props.topicsList.filter((topicItem) => {
             // determine if searching by title or by keyword,
             return (this.props.selectorValue === 'title') ? topicItem.topicTitle.toLowerCase().indexOf(this.props.search.toLowerCase()) !== -1 : (this.props.selectorValue === 'content') ? this.filterByContent(topicItem) : this.filterByKeyword(topicItem)

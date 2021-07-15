@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // style 
 import styled from 'styled-components'
 // components
@@ -9,6 +9,13 @@ const Topic = ({ topic, calculateWordCount, entries, addEntryHandler }) => {
 
     console.log(entries)
 
+    const [addEntry, setAddEntry] = useState(true)
+
+    // show/hide add topics form
+    const addEntryToggle = () => {
+        setAddEntry(!addEntry)
+    }
+
     return (
         <StyledTopic>
             <StyledFirstRow>
@@ -18,11 +25,18 @@ const Topic = ({ topic, calculateWordCount, entries, addEntryHandler }) => {
             <StyledLoggedEntry>
                 {(entries.length > 1 && typeof entries === 'object') ?
                     entries.map((entry, index) => {
-                        console.log(entry)
+                        console.log(entries)
                         return <LoggedEntry key={index} date={entry.date} tags={entry.tags} wordCount={calculateWordCount(entry)} text={entry.text} />
                     }) : <LoggedEntry date={entries.date} tags={entries.tags} wordCount={calculateWordCount(entries)} text={entries.text} />}
             </StyledLoggedEntry>
-            <AddEntry topic={topic} addEntryHandler={addEntryHandler} />
+            <div>
+                <button onClick={addEntryToggle}>{(!addEntry) ? 'Add Entry' : 'Hide Add Entry'}</button>
+            </div>
+            <div>
+                <br />
+                {(addEntry) ? <AddEntry topic={topic} addEntryHandler={addEntryHandler} addEntryToggle={addEntryToggle} /> : null}
+            </div>
+
         </StyledTopic>
     )
 }

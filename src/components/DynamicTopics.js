@@ -7,6 +7,7 @@ import DynamicSearch from './DynamicSearch'
 
 function DynamicTopics() {
     const [topics, setTopics] = useState(topicsJSON)
+    // const [entries, setEntries] = useState(topic.entries)
     const [addTopic, setAddTopic] = useState(false)
 
     // show/hide add topics form
@@ -19,16 +20,15 @@ function DynamicTopics() {
         const topicsCopy = topics
 
         topicsCopy.push(topic)
-
-        setTopics(topicsCopy)
         setAddTopic(!addTopic)
     }
 
     const addEntryHandler = (topic, entry) => {
-        const entriesCopy = topic.entries
-
-        entriesCopy.push(entry)
-
+        let entriesCopy = []
+        if (topic.entries.length > 1 && typeof topic.entries === 'object') {
+            entriesCopy = topic.entries
+            entriesCopy.push(entry)
+        }
     }
 
     return (

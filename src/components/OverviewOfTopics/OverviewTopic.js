@@ -20,8 +20,6 @@ const OverviewTopic = ({ topicTitle, entries, topicWordCount, calculateWords }) 
         return text.split(' ').length
     }
 
-    console.log(topicURL(topicTitle))
-
     return (
         <StyledTopic>
             <StyledRow>

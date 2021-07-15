@@ -46,8 +46,7 @@ class AddTopic extends Component {
     handleTagsInput = (event) => {
         const tagsValues = () => {
             if (event.target.value.includes(',')) {
-                let tagsArray = event.target.value.split(',')
-                return tagsArray
+                return event.target.value.split(',')
             } else {
                 return event.target.value
             }

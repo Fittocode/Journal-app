@@ -6,7 +6,7 @@ class AddEntry extends Component {
         this.state = {
             date: this.defaultDate(),
             tags: [''],
-            text: ''
+            text: '',
         }
     }
 
@@ -47,6 +47,7 @@ class AddEntry extends Component {
         event.preventDefault()
         console.log(this.state)
         this.props.addEntryHandler(this.props.topic, this.state)
+        this.props.addEntryToggle()
         this.setState({
             date: '',
             tags: [],
