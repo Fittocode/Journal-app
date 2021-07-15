@@ -8,11 +8,11 @@ class AddTopic extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            topicTitle: 'Untitled',
+            topicTitle: '',
             entries: {
                 date: this.defaultDate(),
-                tags: ['uninspired'],
-                text: `...`
+                tags: [''],
+                text: ``
             }
         }
     }

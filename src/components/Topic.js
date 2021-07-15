@@ -5,23 +5,20 @@ import styled from 'styled-components'
 import LoggedEntry from '../components/OverviewOfTopics/LoggedEntry'
 import AddEntry from './AddEntry'
 
-const Topic = ({ topicTitle, topicWordCount, entries }) => {
-
-    console.log(topicTitle)
-    console.log(typeof entries)
+const Topic = ({ topicTitle, calculateWordCount, entries }) => {
 
     return (
         <StyledTopic>
             <StyledFirstRow>
                 <StyledTitle>{topicTitle} </StyledTitle>
-                <span>{topicWordCount} words</span>
+                <span>{calculateWordCount(entries)} total words</span>
             </StyledFirstRow>
             <StyledLoggedEntry>
                 {(entries.length > 1 && typeof entries === 'object') ?
                     entries.map((entry, index) => {
-                        console.log('I am an object')
-                        return <LoggedEntry key={index} date={entry.date} tags={entry.tags} wordCount={entry.wordCount} text={entry.text} />
-                    }) : <LoggedEntry date={entries.date} tags={entries.tags} wordCount={entries.wordCount} text={entries.text} />}
+                        console.log()
+                        return <LoggedEntry key={index} date={entry.date} tags={entry.tags} wordCount={calculateWordCount(entry)} text={entry.text} />
+                    }) : <LoggedEntry date={entries.date} tags={entries.tags} wordCount={calculateWordCount(entries)} text={entries.text} />}
             </StyledLoggedEntry>
             <AddEntry />
         </StyledTopic>
@@ -34,8 +31,8 @@ const StyledTitle = styled.h1`
 
 const StyledTopic = styled.div`
     padding-top: 1rem;
-    margin-right: 5%;
     margin-left: 20%;
+    margin-right: 20%;
 `
 
 const StyledFirstRow = styled.div`

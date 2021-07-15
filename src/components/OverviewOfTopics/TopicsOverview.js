@@ -12,7 +12,26 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 class TopicsOverview extends Component {
 
     topicURL = (topicTitle) => {
-        return topicTitle.split(' ').join('-')
+        return (topicTitle.includes('?')) ? topicTitle.split(' ').join('-').slice(0, topicTitle.length - 1) : topicTitle.split(' ').join('-')
+    }
+
+
+    calculateWordLength = (entries) => {
+        console.log(entries)
+        let wordLength = 0
+        if (entries.length > 1 && typeof entries === 'object') {
+            entries.map((entry) => {
+                return wordLength += entry.text.split(' ').length
+            })
+            return wordLength
+        } else {
+            console.log(entries.text.split(' ').length)
+            if (entries.text.split(' ').length === 1) {
+                return 1
+            } else {
+                return entries.text.split(' ').length
+            }
+        }
     }
 
     filterByKeyword = (topic) => {
@@ -53,6 +72,7 @@ class TopicsOverview extends Component {
         }
     }
 
+
     render() {
         let filteredTopics = this.props.topicsList.filter((topicItem) => {
             // determine if searching by title or by keyword,
@@ -70,14 +90,12 @@ class TopicsOverview extends Component {
                     <Switch>
                         <Route path={'/'} exact>
                             {filteredTopics.map((topic, index) => {
-                                return <OverviewTopic key={index} topicTitle={topic.topicTitle} topicWordCount={topic.topicWordCount} entries={topic.entries} />
+                                return <OverviewTopic key={index} topicTitle={topic.topicTitle} topicWordCount={this.calculateWordLength(topic.entries)} calculateWordCount={this.calculateWordLength} entries={topic.entries} />
                             })}
                         </Route>
                         {this.props.topicsList.map((topic, index) => {
-                            console.log(this.topicURL(topic.topicTitle))
-                            console.log(topic.entries)
                             return <Route path={`/${this.topicURL(topic.topicTitle)}`} key={index} exact>
-                                <Topic topicTitle={topic.topicTitle} topicWordCount={topic.topicWordCount} entries={topic.entries} />
+                                <Topic topicTitle={topic.topicTitle} calculateWordCount={this.calculateWordLength} entries={topic.entries} />
                             </Route>
                         })}
                     </Switch>
