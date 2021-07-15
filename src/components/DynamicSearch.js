@@ -25,7 +25,6 @@ class DynamicSearch extends Component {
         })
     }
 
-
     render() {
         return (
             <div>

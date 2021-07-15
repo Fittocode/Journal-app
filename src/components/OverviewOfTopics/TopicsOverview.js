@@ -68,13 +68,13 @@ class TopicsOverview extends Component {
                 {(this.props.addTopic) ? <AddTopic clickToAdd={this.props.addTopicHandler} /> : null}
                 <Router>
                     <Switch>
-                        <Route path={'/'}>
+                        <Route path={'/'} exact>
                             {filteredTopics.map((topic, index) => {
                                 return <OverviewTopic key={index} topicTitle={topic.topicTitle} topicWordCount={topic.topicWordCount} entries={topic.entries} />
                             })}
                         </Route>
                         {filteredTopics.map((topic, index) => {
-                            return <Route path={`/${this.topicURL(topic.topicTitle)}`} key={index}>
+                            return <Route path={`/${this.topicURL(topic.topicTitle)}`} key={index} exact>
                                 <h1>{topic.topicTitle}</h1>
                             </Route>
                         })}
