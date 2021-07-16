@@ -57,7 +57,7 @@ class TopicsOverview extends Component {
         }
     }
 
-    filterIndex = (topic) => {
+    filterContentIndex = (topic) => {
         let searchInput = this.props.search.toLowerCase()
 
         for (let i = 0; i < topic.entries.length; i++) {
@@ -65,6 +65,18 @@ class TopicsOverview extends Component {
             if (topicText.includes(searchInput)) {
                 console.log(topic.entries[i])
                 return i
+            }
+        }
+    }
+
+    filterKeywordIndex = (topic) => {
+        let searchInput = this.props.search.toLowerCase()
+        for (let i = 0; i < topic.entries.length; i++) {
+            for (let j = 0; j < topic.entries[i].tags.length; j++) {
+                let topicEntryTags = topic.entries[i].tags[j].toLowerCase()
+                if (topicEntryTags.includes(searchInput)) {
+                    return i
+                }
             }
         }
     }
@@ -88,7 +100,7 @@ class TopicsOverview extends Component {
                     <Switch>
                         <Route path={'/'} exact>
                             {filteredTopics.map((topic, index) => {
-                                return <OverviewTopic key={index} topicTitle={topic.topicTitle} calculateWordCount={this.calculateWordLength} entryWordCount={this.entryWordCount} entries={topic.entries} index={index} filteredIndex={this.filterIndex(topic)} />
+                                return <OverviewTopic key={index} topicTitle={topic.topicTitle} calculateWordCount={this.calculateWordLength} entryWordCount={this.entryWordCount} entries={topic.entries} index={index} filteredIndex={(this.props.selectorValue === 'content') ? this.filterContentIndex(topic) : (this.props.selectorValue === 'keyword') ? this.filterKeywordIndex(topic) : topic.entries.length - 1} />
                             })}
                         </Route>
                         {this.props.topicsList.map((topic, index) => {
