@@ -4,8 +4,6 @@ import styled from 'styled-components'
 
 const LoggedEntry = ({ date, tags, text, wordCount }) => {
 
-    console.log(text)
-
     return (
         <StyledSub>
             <hr />

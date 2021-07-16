@@ -47,9 +47,6 @@ const AddTopic = ({ clickToAdd }) => {
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        console.log(text)
-        console.log(tags)
-
         clickToAdd({
             topicTitle,
             entries: [{
@@ -60,7 +57,6 @@ const AddTopic = ({ clickToAdd }) => {
         })
 
         setTopicTitle('')
-
     }
     return (
         <StyledAddTopic>

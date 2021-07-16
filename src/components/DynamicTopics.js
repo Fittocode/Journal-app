@@ -25,11 +25,8 @@ function DynamicTopics() {
     }
 
     const addEntryHandler = (topic, entry) => {
-        let entriesCopy = []
-        if (topic.entries.length > 1 && typeof topic.entries === 'object') {
-            entriesCopy = topic.entries
-            entriesCopy.push(entry)
-        }
+        const entriesCopy = topic.entries
+        entriesCopy.push(entry)
     }
 
     return (

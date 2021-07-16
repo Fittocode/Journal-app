@@ -27,12 +27,18 @@ class TopicsOverview extends Component {
         }
     }
 
+    entryWordCount = (text) => {
+        return text.split(' ').length
+    }
+
     filterByKeyword = (topic) => {
         let searchInput = this.props.search.toLowerCase()
         if (topic.entries.length >= 1) {
             for (let i = 0; i < topic.entries.length; i++) {
                 for (let j = 0; j < topic.entries[i].tags.length; j++) {
+                    console.log(topic.entries[i].tags)
                     let topicEntryTags = topic.entries[i].tags[j].toLowerCase()
+                    console.log(topic.entries)
                     if (topicEntryTags.includes(searchInput)) {
                         return topicEntryTags.indexOf(searchInput) !== -1
                     }
@@ -85,12 +91,12 @@ class TopicsOverview extends Component {
                     <Switch>
                         <Route path={'/'} exact>
                             {filteredTopics.map((topic, index) => {
-                                return <OverviewTopic key={index} topicTitle={topic.topicTitle} calculateWordCount={this.calculateWordLength} entries={topic.entries} index={index} />
+                                return <OverviewTopic key={index} topicTitle={topic.topicTitle} calculateWordCount={this.calculateWordLength} entryWordCount={this.entryWordCount} entries={topic.entries} index={index} />
                             })}
                         </Route>
                         {this.props.topicsList.map((topic, index) => {
                             return <Route path={`/${this.topicURL(topic.topicTitle)}`} key={index} exact>
-                                <Topic topic={topic} calculateWordCount={this.calculateWordLength} entries={topic.entries} addEntryHandler={this.props.addEntryHandler} />
+                                <Topic topic={topic} calculateWordCount={this.calculateWordLength} entryWordCount={this.entryWordCount} entries={topic.entries} addEntryHandler={this.props.addEntryHandler} />
                             </Route>
                         })}
                     </Switch>
