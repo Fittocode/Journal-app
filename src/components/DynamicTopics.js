@@ -20,6 +20,7 @@ function DynamicTopics() {
         const topicsCopy = topics
 
         topicsCopy.push(topic)
+        setTopics(topicsCopy)
         setAddTopic(!addTopic)
     }
 

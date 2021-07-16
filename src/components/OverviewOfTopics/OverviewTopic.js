@@ -6,7 +6,9 @@ import LoggedEntry from './LoggedEntry'
 // Router
 import { Link } from 'react-router-dom'
 
-const OverviewTopic = ({ topicTitle, entries, topicWordCount, calculateWords }) => {
+const OverviewTopic = ({ topicTitle, entries, topicWordCount, calculateWordCount }) => {
+
+    console.log(topicWordCount)
 
     let featuredEntry = entries
 
@@ -28,7 +30,7 @@ const OverviewTopic = ({ topicTitle, entries, topicWordCount, calculateWords }) 
                 </StyledTitle>
                 <StyledEntry>Entries: {(entries[entries.length - 1]) ? entries.length : 1}</StyledEntry>
                 {/* <span>Created: {entries[0].date}</span> */}
-                <span>{(topicWordCount === 1) ? `1 word` : `${topicWordCount} total words`}</span>
+                <span>{(topicWordCount === 1) ? `1 word` : `${calculateWordCount(entries)} total words`}</span>
             </StyledRow>
             <StyledLoggedEntry>
                 <LoggedEntry date={featuredEntry.date} tags={featuredEntry.tags} text={featuredEntry.text} wordCount={entryWordCount(featuredEntry.text)} />
