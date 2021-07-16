@@ -15,7 +15,7 @@ class TopicsOverview extends Component {
         return (topicTitle.includes('?')) ? topicTitle.split(' ').join('-').slice(0, topicTitle.length - 1) : topicTitle.split(' ').join('-')
     }
 
-    calculateWordLength = (entries) => {
+    calculateWordLength = (entries, index) => {
         let wordLength = 0
         if (entries.length > 1 && typeof entries === 'object') {
             entries.map((entry) => {
@@ -23,11 +23,7 @@ class TopicsOverview extends Component {
             })
             return wordLength
         } else {
-            if (entries.text.split(' ').length === 1) {
-                return 1
-            } else {
-                return entries.text.split(' ').length
-            }
+            // return entries[index].text.split(' ').length
         }
     }
 
@@ -71,6 +67,8 @@ class TopicsOverview extends Component {
 
     render() {
 
+        console.log(this.props.topicsList)
+
         let filteredTopics = this.props.topicsList.filter((topicItem) => {
             // determine if searching by title or by keyword,
             return (this.props.selectorValue === 'title') ? topicItem.topicTitle.toLowerCase().indexOf(this.props.search.toLowerCase()) !== -1 : (this.props.selectorValue === 'content') ? this.filterByContent(topicItem) : this.filterByKeyword(topicItem)
@@ -87,7 +85,7 @@ class TopicsOverview extends Component {
                     <Switch>
                         <Route path={'/'} exact>
                             {filteredTopics.map((topic, index) => {
-                                return <OverviewTopic key={index} topicTitle={topic.topicTitle} topicWordCount={this.calculateWordLength(topic.entries)} calculateWordCount={this.calculateWordLength} entries={topic.entries} />
+                                return <OverviewTopic key={index} topicTitle={topic.topicTitle} calculateWordCount={this.calculateWordLength} entries={topic.entries} index={index} />
                             })}
                         </Route>
                         {this.props.topicsList.map((topic, index) => {

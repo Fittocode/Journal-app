@@ -6,21 +6,19 @@ import LoggedEntry from './LoggedEntry'
 // Router
 import { Link } from 'react-router-dom'
 
-const OverviewTopic = ({ topicTitle, entries, topicWordCount, calculateWordCount }) => {
+const OverviewTopic = ({ topicTitle, entries, calculateWordCount, index }) => {
 
-    console.log(topicWordCount)
-
-    let featuredEntry = entries
+    let featuredEntry = entries[entries.length - 1]
+    console.log(entries)
 
     const topicURL = (topicTitle) => {
         return (topicTitle.includes('?')) ? topicTitle.split(' ').join('-').slice(0, topicTitle.length - 1) : topicTitle.split(' ').join('-')
     }
 
-    if (entries.length > 1) featuredEntry = entries[entries.length - 1]
-
     const entryWordCount = (text) => {
         return text.split(' ').length
     }
+    console.log(index)
 
     return (
         <StyledTopic>
@@ -30,7 +28,7 @@ const OverviewTopic = ({ topicTitle, entries, topicWordCount, calculateWordCount
                 </StyledTitle>
                 <StyledEntry>Entries: {(entries[entries.length - 1]) ? entries.length : 1}</StyledEntry>
                 {/* <span>Created: {entries[0].date}</span> */}
-                <span>{(topicWordCount === 1) ? `1 word` : `${calculateWordCount(entries)} total words`}</span>
+                <span>{(calculateWordCount(entries, index) === 1) ? `1 word` : `${calculateWordCount(entries, index)} total words`}</span>
             </StyledRow>
             <StyledLoggedEntry>
                 <LoggedEntry date={featuredEntry.date} tags={featuredEntry.tags} text={featuredEntry.text} wordCount={entryWordCount(featuredEntry.text)} />

@@ -20,14 +20,12 @@ const Topic = ({ topic, calculateWordCount, entries, addEntryHandler }) => {
         <StyledTopic>
             <StyledFirstRow>
                 <StyledTitle>{topic.topicTitle} </StyledTitle>
-                <span>{calculateWordCount(entries)} total words</span>
+                <span>{calculateWordCount(entries, 0)} total words</span>
             </StyledFirstRow>
             <StyledLoggedEntry>
-                {(entries.length > 1 && typeof entries === 'object') ?
-                    entries.map((entry, index) => {
-                        console.log(entries)
-                        return <LoggedEntry key={index} date={entry.date} tags={entry.tags} wordCount={calculateWordCount(entry)} text={entry.text} />
-                    }) : <LoggedEntry date={entries.date} tags={entries.tags} wordCount={calculateWordCount(entries)} text={entries.text} />}
+                {entries.map((entry, index) => {
+                    return <LoggedEntry key={index} date={entry.date} tags={entry.tags} wordCount={calculateWordCount(entries, 0)} text={entry.text} />
+                })}
             </StyledLoggedEntry>
             <div>
                 <button onClick={addEntryToggle}>{(!addEntry) ? 'Add Entry' : 'Hide Add Entry'}</button>
