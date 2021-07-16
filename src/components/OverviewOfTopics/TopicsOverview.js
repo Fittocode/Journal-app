@@ -33,22 +33,14 @@ class TopicsOverview extends Component {
 
     filterByKeyword = (topic) => {
         let searchInput = this.props.search.toLowerCase()
-        if (topic.entries.length >= 1) {
-            for (let i = 0; i < topic.entries.length; i++) {
-                for (let j = 0; j < topic.entries[i].tags.length; j++) {
-                    console.log(topic.entries[i].tags)
-                    let topicEntryTags = topic.entries[i].tags[j].toLowerCase()
-                    console.log(topic.entries)
-                    if (topicEntryTags.includes(searchInput)) {
-                        return topicEntryTags.indexOf(searchInput) !== -1
-                    }
-                }
-            }
-        } else {
-            for (let i = 0; i < topic.entries.tags.length; i++) {
-                let topicTags = topic.entries.tags[i].toLowerCase()
-                if (topicTags.includes(searchInput)) {
-                    return topicTags.indexOf(searchInput) !== -1
+        for (let i = 0; i < topic.entries.length; i++) {
+            for (let j = 0; j < topic.entries[i].tags.length; j++) {
+                console.log(topic.entries[i].tags)
+                let topicEntryTags = topic.entries[i].tags[j].toLowerCase()
+                console.log(topic.entries)
+                if (topicEntryTags.includes(searchInput)) {
+                    console.log(i)
+                    return topicEntryTags.indexOf(searchInput) !== -1
                 }
             }
         }
@@ -56,24 +48,29 @@ class TopicsOverview extends Component {
 
     filterByContent = (topic) => {
         let searchInput = this.props.search.toLowerCase()
-        if (topic.entries.length >= 1) {
-            for (let i = 0; i < topic.entries.length; i++) {
-                let topicText = topic.entries[i].text.toLowerCase()
-                if (topicText.includes(searchInput)) {
-                    return topicText.toLowerCase().indexOf(searchInput) !== -1
-                }
+
+        for (let i = 0; i < topic.entries.length; i++) {
+            let topicText = topic.entries[i].text.toLowerCase()
+            if (topicText.includes(searchInput)) {
+                return topicText.toLowerCase().indexOf(searchInput) !== -1
             }
-        } else {
-            let topicEntryText = topic.entries.text.toLowerCase()
-            if (topicEntryText.includes(searchInput)) {
-                return topicEntryText.indexOf(searchInput) !== -1
+        }
+    }
+
+    filterIndex = (topic) => {
+        let searchInput = this.props.search.toLowerCase()
+
+        for (let i = 0; i < topic.entries.length; i++) {
+            let topicText = topic.entries[i].text.toLowerCase()
+            if (topicText.includes(searchInput)) {
+                console.log(topic.entries[i])
+                return i
             }
         }
     }
 
     render() {
 
-        console.log(this.props.topicsList)
 
         let filteredTopics = this.props.topicsList.filter((topicItem) => {
             // determine if searching by title or by keyword,
@@ -91,7 +88,7 @@ class TopicsOverview extends Component {
                     <Switch>
                         <Route path={'/'} exact>
                             {filteredTopics.map((topic, index) => {
-                                return <OverviewTopic key={index} topicTitle={topic.topicTitle} calculateWordCount={this.calculateWordLength} entryWordCount={this.entryWordCount} entries={topic.entries} index={index} />
+                                return <OverviewTopic key={index} topicTitle={topic.topicTitle} calculateWordCount={this.calculateWordLength} entryWordCount={this.entryWordCount} entries={topic.entries} index={index} filteredIndex={this.filterIndex(topic)} />
                             })}
                         </Route>
                         {this.props.topicsList.map((topic, index) => {

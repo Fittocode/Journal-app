@@ -6,9 +6,9 @@ import LoggedEntry from './LoggedEntry'
 // Router
 import { Link } from 'react-router-dom'
 
-const OverviewTopic = ({ topicTitle, entries, calculateWordCount, entryWordCount, index }) => {
+const OverviewTopic = ({ topicTitle, entries, calculateWordCount, entryWordCount, index, filteredIndex }) => {
 
-    let featuredEntry = entries[entries.length - 1]
+    let featuredEntry = entries[filteredIndex]
 
     const topicURL = (topicTitle) => {
         return (topicTitle.includes('?')) ? topicTitle.split(' ').join('-').slice(0, topicTitle.length - 1) : topicTitle.split(' ').join('-')
