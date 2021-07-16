@@ -33,13 +33,19 @@ class TopicsOverview extends Component {
 
     filterByKeyword = (topic) => {
         let searchInput = this.props.search.toLowerCase()
+
         for (let i = 0; i < topic.entries.length; i++) {
-            for (let j = 0; j < topic.entries[i].tags.length; j++) {
-                console.log(topic.entries[i].tags)
-                let topicEntryTags = topic.entries[i].tags[j].toLowerCase()
-                console.log(topic.entries)
+            if (topic.entries[i].tags.length > 1 && typeof topic.entries[i].tags === 'object') {
+                for (let j = 0; j < topic.entries[i].tags.length; j++) {
+                    let topicEntryTags = topic.entries[i].tags[j].toLowerCase()
+                    if (topicEntryTags.includes(searchInput)) {
+                        return topicEntryTags.indexOf(searchInput) !== -1
+                    }
+                }
+            } else {
+                let topicEntryTags = topic.entries[i].tags.toLowerCase()
+                console.log(topicEntryTags)
                 if (topicEntryTags.includes(searchInput)) {
-                    console.log(i)
                     return topicEntryTags.indexOf(searchInput) !== -1
                 }
             }
@@ -52,7 +58,7 @@ class TopicsOverview extends Component {
         for (let i = 0; i < topic.entries.length; i++) {
             let topicText = topic.entries[i].text.toLowerCase()
             if (topicText.includes(searchInput)) {
-                return topicText.toLowerCase().indexOf(searchInput) !== -1
+                return topicText.indexOf(searchInput) !== -1
             }
         }
     }
@@ -63,7 +69,6 @@ class TopicsOverview extends Component {
         for (let i = 0; i < topic.entries.length; i++) {
             let topicText = topic.entries[i].text.toLowerCase()
             if (topicText.includes(searchInput)) {
-                console.log(topic.entries[i])
                 return i
             }
         }
@@ -71,9 +76,17 @@ class TopicsOverview extends Component {
 
     filterKeywordIndex = (topic) => {
         let searchInput = this.props.search.toLowerCase()
+
         for (let i = 0; i < topic.entries.length; i++) {
-            for (let j = 0; j < topic.entries[i].tags.length; j++) {
-                let topicEntryTags = topic.entries[i].tags[j].toLowerCase()
+            if (topic.entries[i].tags.length > 1 && typeof topic.entries[i].tags === 'object') {
+                for (let j = 0; j < topic.entries[i].tags.length; j++) {
+                    let topicEntryTags = topic.entries[i].tags[j].toLowerCase()
+                    if (topicEntryTags.includes(searchInput)) {
+                        return i
+                    }
+                }
+            } else {
+                let topicEntryTags = topic.entries[i].tags.toLowerCase()
                 if (topicEntryTags.includes(searchInput)) {
                     return i
                 }
