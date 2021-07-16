@@ -6,12 +6,6 @@ import styled from 'styled-components'
 
 const AddTopic = ({ clickToAdd }) => {
 
-    const [topicTitle, setTopicTitle] = useState('')
-    const [date, setDate] = useState('')
-    const [tags, setTags] = useState([])
-    const [text, setText] = useState('')
-
-
     const defaultDate = () => {
         var dateObj = new Date();
         var month = dateObj.getUTCMonth() + 1; //months from 1-12
@@ -21,6 +15,11 @@ const AddTopic = ({ clickToAdd }) => {
         let newdate = month + "/" + day + "/" + year;
         return newdate
     }
+
+    const [topicTitle, setTopicTitle] = useState('')
+    const [date, setDate] = useState(defaultDate())
+    const [tags, setTags] = useState([])
+    const [text, setText] = useState('')
 
     const handleTopicInput = (event) => {
         setTopicTitle(event.target.value)

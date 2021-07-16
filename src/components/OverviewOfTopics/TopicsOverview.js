@@ -15,7 +15,7 @@ class TopicsOverview extends Component {
         return (topicTitle.includes('?')) ? topicTitle.split(' ').join('-').slice(0, topicTitle.length - 1) : topicTitle.split(' ').join('-')
     }
 
-    calculateWordLength = (entries, index) => {
+    calculateWordLength = (entries) => {
         let wordLength = 0
         if (entries.length > 1 && typeof entries === 'object') {
             entries.map((entry) => {
@@ -23,7 +23,7 @@ class TopicsOverview extends Component {
             })
             return wordLength
         } else {
-            // return entries[index].text.split(' ').length
+            return entries[0].text.split(' ').length
         }
     }
 
