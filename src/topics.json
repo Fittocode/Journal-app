@@ -1,15 +1,14 @@
 [
     {
-        "topicTitle": "I love coffee",
-        "topicWordCount": 19,
+        "topicTitle": "Welcome!",
         "entries": [
             {
-                "date": "7/7/2021",
+                "date": "7/17/2021",
                 "tags": [
-                    "food",
-                    "pleasure"
+                    "journal",
+                    "organization"
                 ],
-                "text": "Coffee is the greatest fuel source devised by man (and woman)"
+                "text": "This is a journal for quickly adding ideas in the form of tweet-like entries to new or pre-existing topics"
             }
         ]
     }

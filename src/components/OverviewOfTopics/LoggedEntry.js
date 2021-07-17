@@ -2,7 +2,14 @@ import React from 'react'
 // style
 import styled from 'styled-components'
 
-const LoggedEntry = ({ date, tags, text, wordCount }) => {
+const LoggedEntry = ({ date, tags, text, wordCount, textIndexOfSearch }) => {
+
+    const highlightSearch = (text) => {
+        let highlightedText = text.slice(textIndexOfSearch[0], textIndexOfSearch[1])
+        console.log(highlightedText)
+        let newText = text.replace(highlightedText, highlightedText.toUpperCase())
+        return newText
+    }
 
     return (
         <StyledSub>
@@ -16,7 +23,7 @@ const LoggedEntry = ({ date, tags, text, wordCount }) => {
                 return `#${tag} `
             }) : `#${tags}`}</StyledTag>
             <br />
-            <p>{text}</p>
+            <p>{highlightSearch(text)}</p>
             <br />
         </StyledSub>
     )

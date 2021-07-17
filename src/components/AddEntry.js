@@ -62,7 +62,6 @@ class AddEntry extends Component {
                     <label>
                         Date Created:
                         <input name="date" type="text" value={this.state.date} onChange={this.handleChange} placeholder="Month/Day/Year"></input>
-                        Leave blank for today's date
                     </label>
                     <div>
                         <br />

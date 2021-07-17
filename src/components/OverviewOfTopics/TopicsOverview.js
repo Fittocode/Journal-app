@@ -7,7 +7,7 @@ import AddTopic from './AddTopic'
 import OverviewTopic from './OverviewTopic'
 import Topic from '../Topic'
 // Router
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 class TopicsOverview extends Component {
 
@@ -58,7 +58,19 @@ class TopicsOverview extends Component {
         for (let i = 0; i < topic.entries.length; i++) {
             let topicText = topic.entries[i].text.toLowerCase()
             if (topicText.includes(searchInput)) {
+                console.log(topicText.indexOf(searchInput))
                 return topicText.indexOf(searchInput) !== -1
+            }
+        }
+    }
+
+    textIndexOfSearch = (topic) => {
+        let searchInput = this.props.search.toLowerCase()
+
+        for (let i = 0; i < topic.entries.length; i++) {
+            let topicText = topic.entries[i].text.toLowerCase()
+            if (topicText.includes(searchInput)) {
+                return [topicText.indexOf(searchInput), topicText.indexOf(searchInput) + searchInput.length]
             }
         }
     }
@@ -104,16 +116,16 @@ class TopicsOverview extends Component {
 
         return (
             <div>
-                <StyledFirstRow>
-                    <StyledHeadline>Recent/All Topics</StyledHeadline>
-                    <StyledHeadline><button onClick={this.props.addTopicToggle}>{(!this.props.addTopic) ? 'Add Topic' : 'Hide Add Topic'}</button></StyledHeadline>
-                </StyledFirstRow>
-                {(this.props.addTopic) ? <AddTopic clickToAdd={this.props.addTopicHandler} /> : null}
                 <Router>
+                    <StyledFirstRow>
+                        <StyledHeadline><Link to={`/`} className="text-placeholder">View All Topics</Link></StyledHeadline>
+                        <StyledHeadline><button onClick={this.props.addTopicToggle}>{(!this.props.addTopic) ? 'Add Topic' : 'Hide Add Topic'}</button></StyledHeadline>
+                    </StyledFirstRow>
+                    {(this.props.addTopic) ? <AddTopic clickToAdd={this.props.addTopicHandler} /> : null}
                     <Switch>
                         <Route path={'/'} exact>
                             {filteredTopics.map((topic, index) => {
-                                return <OverviewTopic key={index} topicTitle={topic.topicTitle} calculateWordCount={this.calculateWordLength} entryWordCount={this.entryWordCount} entries={topic.entries} index={index} filteredIndex={(this.props.selectorValue === 'content') ? this.filterContentIndex(topic) : (this.props.selectorValue === 'keyword') ? this.filterKeywordIndex(topic) : topic.entries.length - 1} />
+                                return <OverviewTopic key={index} topicTitle={topic.topicTitle} calculateWordCount={this.calculateWordLength} entryWordCount={this.entryWordCount} entries={topic.entries} index={index} textIndexOfSearch={this.textIndexOfSearch(topic)} filteredIndex={(this.props.selectorValue === 'content') ? this.filterContentIndex(topic) : (this.props.selectorValue === 'keyword') ? this.filterKeywordIndex(topic) : topic.entries.length - 1} />
                             })}
                         </Route>
                         {this.props.topicsList.map((topic, index) => {

@@ -68,7 +68,6 @@ const AddTopic = ({ clickToAdd }) => {
                 <label>
                     Date Created:
                     <input name="date" type="text" value={date} onChange={handleDateInput} placeholder="Month/Day/Year"></input>
-                    Leave blank for today's date
                 </label>
                 <div>
                     <br />
