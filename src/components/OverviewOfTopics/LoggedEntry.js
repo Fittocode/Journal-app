@@ -4,11 +4,22 @@ import styled from 'styled-components'
 
 const LoggedEntry = ({ date, tags, text, wordCount, textIndexOfSearch }) => {
 
-    const highlightSearch = (text) => {
-        let highlightedText = text.slice(textIndexOfSearch[0], textIndexOfSearch[1])
-        console.log(highlightedText)
-        let newText = text.replace(highlightedText, highlightedText.toUpperCase())
-        return newText
+    const preHighlightText = (text) => {
+        let preHighlightText = text.slice(0, textIndexOfSearch[0])
+        console.log(preHighlightText)
+        let newText = text.replace(preHighlightText, preHighlightText)
+        return preHighlightText
+    }
+
+    const highlightText = (text) => {
+        let highlightText = text.slice(textIndexOfSearch[0], textIndexOfSearch[1])
+        return highlightText
+    }
+
+    const postHighlightText = (text) => {
+        let postHighlightText = text.slice(textIndexOfSearch[1], text.length - 1)
+        console.log(postHighlightText)
+        return postHighlightText
     }
 
     return (
@@ -23,7 +34,7 @@ const LoggedEntry = ({ date, tags, text, wordCount, textIndexOfSearch }) => {
                 return `#${tag} `
             }) : `#${tags}`}</StyledTag>
             <br />
-            <p>{highlightSearch(text)}</p>
+            <p>{preHighlightText(text)}<StyledHighlightedText>{highlightText(text)}</StyledHighlightedText>{postHighlightText(text)}</p>
             <br />
         </StyledSub>
     )
@@ -42,6 +53,11 @@ const StyledFirstRow = styled.div`
 
 const StyledTag = styled.div`
     color: #16caa9;
+`
+
+const StyledHighlightedText = styled.span`
+    background-color: #6b23e0;
+    color: white;
 `
 
 export default LoggedEntry
