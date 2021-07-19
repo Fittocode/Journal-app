@@ -1,26 +1,15 @@
 import React from 'react'
 // style
 import styled from 'styled-components'
+import { useLocation } from 'react-router-dom'
 
-const LoggedEntry = ({ date, tags, text, wordCount, textIndexOfSearch }) => {
+const LoggedEntry = ({ date, tags, text, wordCount, textIndexesOfSearch }) => {
 
-    const preHighlightText = (text) => {
-        let preHighlightText = text.slice(0, textIndexOfSearch[0])
-        console.log(preHighlightText)
-        let newText = text.replace(preHighlightText, preHighlightText)
-        return preHighlightText
-    }
+    let textStartIndex = textIndexesOfSearch[0]
+    let textEndIndex = textIndexesOfSearch[1]
 
-    const highlightText = (text) => {
-        let highlightText = text.slice(textIndexOfSearch[0], textIndexOfSearch[1])
-        return highlightText
-    }
-
-    const postHighlightText = (text) => {
-        let postHighlightText = text.slice(textIndexOfSearch[1], text.length - 1)
-        console.log(postHighlightText)
-        return postHighlightText
-    }
+    const location = useLocation()
+    console.log(location.pathname)
 
     return (
         <StyledSub>
@@ -34,7 +23,7 @@ const LoggedEntry = ({ date, tags, text, wordCount, textIndexOfSearch }) => {
                 return `#${tag} `
             }) : `#${tags}`}</StyledTag>
             <br />
-            <p>{preHighlightText(text)}<StyledHighlightedText>{highlightText(text)}</StyledHighlightedText>{postHighlightText(text)}</p>
+            {(location.pathname === '/') ? <p>{text.slice(0, textStartIndex)}<StyledHighlightedText>{text.slice(textStartIndex, textEndIndex)}</StyledHighlightedText>{text.slice(textEndIndex, text.length)}</p> : <p>{text}</p>}
             <br />
         </StyledSub>
     )
@@ -56,8 +45,8 @@ const StyledTag = styled.div`
 `
 
 const StyledHighlightedText = styled.span`
-    background-color: #6b23e0;
-    color: white;
+    background-color: #fdf293;
+
 `
 
 export default LoggedEntry

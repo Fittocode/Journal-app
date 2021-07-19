@@ -6,12 +6,15 @@ import LoggedEntry from './LoggedEntry'
 // Router
 import { Link } from 'react-router-dom'
 
-const OverviewTopic = ({ topicTitle, entries, calculateWordCount, entryWordCount, index, filteredIndex, textIndexOfSearch }) => {
+
+
+const OverviewTopic = ({ topicTitle, entries, calculateWordCount, entryWordCount, index, filteredIndex, textIndexesOfSearch }) => {
 
     let featuredEntry = entries[filteredIndex]
 
     const topicURL = (topicTitle) => {
-        return (topicTitle.includes('?')) ? topicTitle.split(' ').join('-').slice(0, topicTitle.length - 1) : topicTitle.split(' ').join('-')
+        let topicTitleURL = topicTitle.split(' ').join('-')
+        return (topicTitle.includes('?')) ? topicTitleURL.slice(0, topicTitle.length - 1) : topicTitleURL
     }
 
     return (
@@ -25,7 +28,7 @@ const OverviewTopic = ({ topicTitle, entries, calculateWordCount, entryWordCount
                 <span>{(calculateWordCount(entries, index) === 1) ? `1 word` : `${calculateWordCount(entries, index)} total words`}</span>
             </StyledRow>
             <StyledLoggedEntry>
-                <LoggedEntry date={featuredEntry.date} tags={featuredEntry.tags} text={featuredEntry.text} wordCount={entryWordCount(featuredEntry.text)} textIndexOfSearch={textIndexOfSearch} />
+                <LoggedEntry date={featuredEntry.date} tags={featuredEntry.tags} text={featuredEntry.text} wordCount={entryWordCount(featuredEntry.text)} textIndexesOfSearch={textIndexesOfSearch} />
             </StyledLoggedEntry>
         </StyledTopic >
     )

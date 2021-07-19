@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import LoggedEntry from '../components/OverviewOfTopics/LoggedEntry'
 import AddEntry from './AddEntry'
 
-const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordCount }) => {
+const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordCount, textIndexesOfSearch }) => {
 
     console.log(entries)
 
@@ -24,7 +24,7 @@ const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordC
             </StyledFirstRow>
             <StyledLoggedEntry>
                 {entries.map((entry, index) => {
-                    return <LoggedEntry key={index} date={entry.date} tags={entry.tags} wordCount={entryWordCount(entry.text)} text={entry.text} />
+                    return <LoggedEntry key={index} date={entry.date} tags={entry.tags} wordCount={entryWordCount(entry.text)} text={entry.text} textIndexesOfSearch={textIndexesOfSearch} />
                 })}
             </StyledLoggedEntry>
             <div>
