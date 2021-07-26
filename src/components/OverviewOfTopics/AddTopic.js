@@ -59,7 +59,7 @@ const AddTopic = ({ clickToAdd }) => {
         setTopicTitle('')
     }
     return (
-        <StyledAddTopic>
+        <div className="add-topic">
             <form onSubmit={handleSubmit}>
                 <label>
                     Topic Title:
@@ -89,14 +89,8 @@ const AddTopic = ({ clickToAdd }) => {
                     <input type="submit" value="submit" />
                 </div>
             </form>
-        </StyledAddTopic>
+        </div>
     )
 }
 
-
-const StyledAddTopic = styled.div`
-    padding: 2rem 0rem 0rem;
-    margin-right: 5%;
-    margin-left: 20%;
-`
 export default AddTopic

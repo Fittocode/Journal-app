@@ -1,6 +1,4 @@
 import React from 'react'
-// style 
-import styled from 'styled-components'
 // components
 import LoggedEntry from './LoggedEntry'
 // Router
@@ -8,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 
 
-const OverviewTopic = ({ topicTitle, entries, calculateWordCount, entryWordCount, index, filteredIndex, textIndexesOfSearch }) => {
+const OverviewTopic = ({ topicTitle, entries, calculateWordCount, entryWordCount, index, filteredIndex, textIndexesOfSearch, searchSelector }) => {
 
     let featuredEntry = entries[filteredIndex]
 
@@ -18,48 +16,20 @@ const OverviewTopic = ({ topicTitle, entries, calculateWordCount, entryWordCount
     }
 
     return (
-        <StyledTopic>
-            <StyledRow>
-                <StyledTitle>
+        <div className="topics">
+            <div className="ov-row">
+                <div className="ov-row">
                     <Link to={`/${topicURL(topicTitle)}`} className="text-placeholder"><h2>{topicTitle}</h2></Link>
-                </StyledTitle>
-                <StyledEntry>Entries: {(entries[entries.length - 1]) ? entries.length : 1}</StyledEntry>
+                </div>
+                <div className="ov-entry">Entries: {(entries[entries.length - 1]) ? entries.length : 1}</div>
                 {/* <span>Created: {entries[0].date}</span> */}
                 <span>{(calculateWordCount(entries, index) === 1) ? `1 word` : `${calculateWordCount(entries, index)} total words`}</span>
-            </StyledRow>
-            <StyledLoggedEntry>
-                <LoggedEntry date={featuredEntry.date} tags={featuredEntry.tags} text={featuredEntry.text} wordCount={entryWordCount(featuredEntry.text)} textIndexesOfSearch={textIndexesOfSearch} />
-            </StyledLoggedEntry>
-        </StyledTopic >
+            </div>
+            <div className="logged-entry">
+                <LoggedEntry date={featuredEntry.date} tags={featuredEntry.tags} text={featuredEntry.text} wordCount={entryWordCount(featuredEntry.text)} textIndexesOfSearch={textIndexesOfSearch} searchSelector={searchSelector} />
+            </div>
+        </div >
     )
 }
-
-const StyledTopic = styled.div`
-    padding-top: 1rem;
-    margin-right: 20%;
-    margin-left: 20%;
-`
-
-const StyledRow = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-`
-
-const StyledTitle = styled.div`
-    padding-top: 1rem;
-    display: flex;
-    align-items: flex-end;
-`
-
-const StyledEntry = styled.div`
-    padding-left: 1rem;
-    display: flex;
-    align-items: flex-end;
-`
-
-const StyledLoggedEntry = styled.div`
-   padding-top: 1rem;  
-`
 
 export default OverviewTopic

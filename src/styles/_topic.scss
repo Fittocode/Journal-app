@@ -1,0 +1,60 @@
+.topics {
+    padding-top: 1rem;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.topic-title {
+    color: #6b23e0;
+}
+
+.first-row {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logged-entry {
+    padding-top: 1rem;  
+}
+
+.add-topic {
+    padding: 2rem 0rem 0rem;
+    margin-right: 5%;
+    margin-left: 20%;
+}
+
+// overview topics
+
+.ov-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.ov-title {
+    padding-top: 1rem;
+    display: flex;
+    align-items: flex-end;
+}
+
+.ov-entry {
+    padding-left: 1rem;
+    display: flex;
+    align-items: flex-end;
+}
+
+// topics overview
+
+.to-headline-color {
+    color: black;
+}
+
+.to-first-row {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+    margin-right: 20%;
+    margin-left: 20%;
+}

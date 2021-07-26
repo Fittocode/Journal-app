@@ -3,50 +3,37 @@ import React from 'react'
 import styled from 'styled-components'
 import { useLocation } from 'react-router-dom'
 
-const LoggedEntry = ({ date, tags, text, wordCount, textIndexesOfSearch }) => {
+const LoggedEntry = ({ date, tags, text, wordCount, textIndexesOfSearch, searchSelector }) => {
 
-    let textStartIndex = textIndexesOfSearch[0]
-    let textEndIndex = textIndexesOfSearch[1]
+    let textStartIndex = 0
+    let textEndIndex = 0
+
+    if (searchSelector === 'content') {
+        textStartIndex = textIndexesOfSearch[0]
+        textEndIndex = textIndexesOfSearch[1]
+    }
 
     const location = useLocation()
     console.log(location.pathname)
 
     return (
-        <StyledSub>
+        <div className="entry">
             <hr />
-            <StyledFirstRow>
+            <div className="first-row">
                 <span>{date}</span>
                 <span>{(text === '') ? 7 : wordCount} {(wordCount === 1) ? `word` : `words`}</span>
-            </StyledFirstRow>
+            </div>
             <br />
-            <StyledTag>{(tags.length > 1 && typeof tags === 'object') ? tags.map(tag => {
+            <div className="tag-color">{(tags.length > 1 && typeof tags === 'object') ? tags.map(tag => {
                 return `#${tag} `
-            }) : `#${tags}`}</StyledTag>
+            }) : `#${tags}`}</div>
             <br />
-            {(location.pathname === '/') ? <p>{text.slice(0, textStartIndex)}<StyledHighlightedText>{text.slice(textStartIndex, textEndIndex)}</StyledHighlightedText>{text.slice(textEndIndex, text.length)}</p> : <p>{text}</p>}
+            {(location.pathname === '/' && searchSelector === 'content') ? <p>{text.slice(0, textStartIndex)}<span className="highlightedText">{text.slice(textStartIndex, textEndIndex)}</span>{text.slice(textEndIndex, text.length)}</p> : <p>{text}</p>}
             <br />
-        </StyledSub>
+        </div >
     )
 }
 
-const StyledSub = styled.div`
-    padding-bottom: 0rem;
-`
 
-const StyledFirstRow = styled.div`
-    padding-top: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-`
-
-const StyledTag = styled.div`
-    color: #16caa9;
-`
-
-const StyledHighlightedText = styled.span`
-    background-color: #fdf293;
-
-`
 
 export default LoggedEntry

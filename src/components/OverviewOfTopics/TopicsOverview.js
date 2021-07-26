@@ -1,7 +1,5 @@
 // Step 1: Import React
 import React, { Component } from 'react'
-// style
-import styled from 'styled-components'
 // components
 import AddTopic from './AddTopic'
 import OverviewTopic from './OverviewTopic'
@@ -79,6 +77,28 @@ class TopicsOverview extends Component {
         }
     }
 
+    keywordIndexesOfSearch = (topic) => {
+        let searchInput = this.props.search.toLowerCase()
+
+        for (let i = 0; i < topic.entries.length; i++) {
+            if (topic.entries[i].tags.length > 1) {
+                for (let j = 0; j < topic.entries[i].tags.length; j++) {
+                    let topicEntryTags = topic.entries[i].tags[j].toLowerCase()
+                    if (topicEntryTags.includes(searchInput)) {
+                        return [topicEntryTags.indexOf(searchInput), topicEntryTags.indexOf(searchInput) + searchInput.length]
+                    }
+                }
+            } else if (topic.entries[i].tags.length = 1) {
+                let topicEntryTags = topic.entries[i].tags.toLowerCase()
+                if (topicEntryTags.includes(searchInput)) {
+                    return [topicEntryTags.indexOf(searchInput), topicEntryTags.indexOf(searchInput) + searchInput.length]
+                }
+            } else {
+
+            }
+        }
+    }
+
     filterContentIndex = (topic) => {
         let searchInput = this.props.search.toLowerCase()
 
@@ -111,6 +131,7 @@ class TopicsOverview extends Component {
     }
 
     render() {
+        console.log(this.props.selectorValue)
 
         let filteredTopics = this.props.topicsList.filter((topicItem) => {
             // determine if searching by title or by keyword,
@@ -120,10 +141,10 @@ class TopicsOverview extends Component {
         return (
             <div>
                 <Router>
-                    <StyledFirstRow>
-                        <StyledHeadline><Link to={`/`} className="text-placeholder">View All Topics</Link></StyledHeadline>
-                        <StyledHeadline><button onClick={this.props.addTopicToggle}>{(!this.props.addTopic) ? 'Add Topic' : 'Hide Add Topic'}</button></StyledHeadline>
-                    </StyledFirstRow>
+                    <div className="to-first-row">
+                        <h2 className="to-headline-color"><Link to={`/`} className="text-placeholder">View All Topics</Link></h2>
+                        <h2 className="to-headline-color"><button onClick={this.props.addTopicToggle}>{(!this.props.addTopic) ? 'Add Topic' : 'Hide Add Topic'}</button></h2>
+                    </div>
                     {(this.props.addTopic) ? <AddTopic clickToAdd={this.props.addTopicHandler} /> : null}
                     <Switch>
                         <Route path={'/'} exact>
@@ -137,6 +158,7 @@ class TopicsOverview extends Component {
                                     index={index}
                                     textIndexesOfSearch={this.textIndexesOfSearch(topic)}
                                     filteredIndex={(this.props.selectorValue === 'content') ? this.filterContentIndex(topic) : (this.props.selectorValue === 'keyword') ? this.filterKeywordIndex(topic) : topic.entries.length - 1}
+                                    searchSelector={(this.props.selectorValue === 'content') ? 'content' : (this.props.selectorValue === 'keyword') ? 'keyword' : 'title'}
                                 />
                             })}
                         </Route>
@@ -158,18 +180,6 @@ class TopicsOverview extends Component {
         )
     }
 }
-
-const StyledHeadline = styled.h2`
-  color: black;
-`
-
-const StyledFirstRow = styled.div`
-    display: flex;
-    justify-content: space-between;
-    padding-top: 2rem;
-    margin-right: 20%;
-    margin-left: 20%;
-`
 
 export default TopicsOverview
 
