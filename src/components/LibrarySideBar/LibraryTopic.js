@@ -2,18 +2,19 @@ import React from 'react'
 // style 
 import styled from 'styled-components'
 
-const LibraryTopic = ({ title, wordCount, date, firstTags, firstWords }) => {
+const LibraryTopic = ({ topicTitle, wordCount, date, tags, text }) => {
+
+    console.log(topicTitle)
     return (
-        <StyledLibraryTopic>
-            <StyledFirstLine>
-                <h3>{title}</h3>
-                <p>{wordCount} words</p>
-            </StyledFirstLine>
-            <p>created {date}</p>
-            <StyledLine></StyledLine>
-            <StyledTags>{firstTags}</StyledTags>
-            <p>{firstWords}</p>
-        </StyledLibraryTopic>
+        <div className="library-song">
+            <div>
+                <h3 className="topic-title">{topicTitle}</h3>
+            </div>
+            <p>{date}</p>
+            <hr></hr>
+            <div className="tags">{tags}</div>
+            <p>{text}</p>
+        </div>
     )
 }
 

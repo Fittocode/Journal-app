@@ -2,6 +2,10 @@
     padding-top: 1rem;
     margin-left: 20%;
     margin-right: 20%;
+    transition: background 0.3s ease;
+    &:hover {
+        background: rgb(241, 241, 241);
+    }
 }
 
 .topic-title {
@@ -47,14 +51,23 @@
 
 // topics overview
 
-.to-headline-color {
-    color: black;
-}
-
 .to-first-row {
     display: flex;
     justify-content: space-between;
     padding-top: 2rem;
     margin-right: 20%;
     margin-left: 20%;
+}
+
+.to-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgb(65, 65, 65);
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    &:hover{
+        background: rgb(65,65,65);
+        color: white;
+    }
 }

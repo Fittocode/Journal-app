@@ -9,7 +9,8 @@ class DynamicSearch extends Component {
         super(props)
         this.state = {
             search: '',
-            selectorValue: 'title'
+            selectorValue: 'title',
+            libraryStatus: false
         }
     }
 
@@ -25,12 +26,36 @@ class DynamicSearch extends Component {
         })
     }
 
+    libraryToggle = () => {
+        this.setState({
+            libraryStatus: !this.state.libraryStatus
+        })
+        console.log(this.state.libraryStatus)
+    }
+
     render() {
         return (
             <div>
-                <Navbar handleSearchChange={this.handleSearchChange} search={this.state.search} selectorValue={this.state.selectorValue} handleSelectorChange={this.handleSelectorChange} />
-                {/* <Library title={'Featured Topics'} /> */}
-                <TopicsOverview topicsList={this.props.topicsList} addTopicToggle={this.props.addTopicToggle} addTopicHandler={this.props.addTopicHandler} addEntryHandler={this.props.addEntryHandler} addTopic={this.props.addTopic} search={this.state.search} selectorValue={this.state.selectorValue} />
+                <Navbar
+                    handleSearchChange={this.handleSearchChange}
+                    search={this.state.search}
+                    selectorValue={this.state.selectorValue}
+                    handleSelectorChange={this.handleSelectorChange}
+                />
+                <Library
+                    libraryStatus={this.state.libraryStatus}
+                    topicsList={this.props.topicsList}
+                />
+                <TopicsOverview
+                    topicsList={this.props.topicsList}
+                    addTopicToggle={this.props.addTopicToggle}
+                    addTopicHandler={this.props.addTopicHandler}
+                    addEntryHandler={this.props.addEntryHandler}
+                    addTopic={this.props.addTopic}
+                    search={this.state.search}
+                    selectorValue={this.state.selectorValue}
+                    libraryToggle={this.libraryToggle}
+                />
             </div>
         )
     }
