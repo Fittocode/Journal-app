@@ -134,6 +134,7 @@ class TopicsOverview extends Component {
             return (this.props.selectorValue === 'title') ? topicItem.topicTitle.toLowerCase().indexOf(this.props.search.toLowerCase()) !== -1 : (this.props.selectorValue === 'content') ? this.filterByContent(topicItem) : this.filterByKeyword(topicItem)
         })
         console.log(filteredTopics)
+        console.log('')
         return (
             <Router>
                 <div className="to-first-row">
@@ -144,7 +145,7 @@ class TopicsOverview extends Component {
                 {(this.props.addTopic) ? <AddTopic clickToAdd={this.props.addTopicHandler} /> : null}
                 <Switch>
                     <Route path={'/'} exact>
-                        {(filteredTopics.length === 1) ? filteredTopics.map((topic, index) => {
+                        {(filteredTopics.length >= 1) ? filteredTopics.map((topic, index) => {
                             return <OverviewTopic
                                 key={index}
                                 topicTitle={topic.topicTitle}

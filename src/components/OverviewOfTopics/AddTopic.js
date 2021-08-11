@@ -69,7 +69,7 @@ const AddTopic = ({ clickToAdd }) => {
                 </label>
                 <div>
                     <p style={{ padding: "10px 0px 10px" }}>For your first entry, it's a good idea to give a brief description of what your topic will be about. If you're not sure, add a random thought. You can always update it later!</p>
-                    <textarea name="text" type="text" value={text} onChange={handleTextInput} placeholder="What's on your mind?" cols="100" rows="10" />
+                    <textarea className="textarea" name="text" type="text" value={text} onChange={handleTextInput} placeholder="What's on your mind?" />
                     <br />
                 </div>
                 Entry keywords:

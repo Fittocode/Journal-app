@@ -8,7 +8,7 @@ function NoResult() {
             </div>
             <br />
             <div className="entry">
-                <p>Make sure you spelled everything correctly!</p>
+                <p>Make sure everything was spelled correctly!</p>
             </div>
         </div>
     )

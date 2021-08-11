@@ -25,11 +25,11 @@ const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordC
                     return <LoggedEntry key={index} date={entry.date} tags={entry.tags} wordCount={entryWordCount(entry.text)} text={entry.text} textIndexesOfSearch={textIndexesOfSearch} />
                 })}
             </div>
-            <div>
-                <button className="to-button topic-button" onClick={addEntryToggle}>{(!addEntry) ? 'Add Entry' : 'Hide Add Entry'}</button>
+            <div style={{ paddingBottom: '1rem' }}>
+                <button className="entry-button" onClick={addEntryToggle}>{(!addEntry) ? 'Add Entry' : 'Hide Add Entry'}</button>
             </div>
             {(addEntry) ? <div className="add-entry-box"><AddEntry topic={topic} addEntryHandler={addEntryHandler} addEntryToggle={addEntryToggle} /> </div> : null}
-        </div>
+        </div >
     )
 }
 

@@ -6,6 +6,14 @@
     transition: background 0.3s ease;
     background-color: white;
     border-bottom: solid 1px #ebebeb;
+    @media screen and (max-width: 1200px) {
+            margin-left: 10%;
+            margin-right: 10%;
+    }
+    @media screen and (max-width: 500px) {
+        margin-left: 5%;
+        margin-right: 5%;
+    } 
 }
 
 .topic-button {
@@ -82,6 +90,21 @@
     }
 }
 
+.entry-button {
+    background: rgb(216, 216, 216);
+    color: black;
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    &:hover{
+        background: rgb(216, 216, 216);
+        border-color: rgb(216, 216, 216)
+    }
+
+}
+
 // add topic 
 
 .labels {
@@ -91,8 +114,24 @@
 
 .textarea {
     padding: .3rem;
+    width: 100%;
+    height: 15vh
 }
 
 .addtopic-p {
     padding: 10px 0px 10px;
 }
+
+@media screen and (max-width: 1200px) {
+    .topicsm, .to-first-row, .add-topic {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .topicsm, .to-first-row, .add-topic {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+} 
