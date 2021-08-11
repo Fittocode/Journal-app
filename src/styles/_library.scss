@@ -2,8 +2,9 @@
     position: fixed;
     top: 50px;
     left: 0;
-    width: 20rem;
+    width: 22.5rem;
     height: 100%;
+    padding-top: 16px;
     box-shadow: 2px 20px 30px rgb(201, 201, 201);
     overflow: scroll;
     transform: translateX(-100%);
@@ -21,6 +22,7 @@
     &:hover {
         background: rgb(241, 241, 241);
     }
+    border-bottom: solid 1px #ebebeb;
 }
 
 .song-description {
@@ -94,5 +96,9 @@ hr {
 }
 
 .tags {
-    color: #1EA48C;
+    color: #0fc4f1;
+}
+
+#library-topics > * {
+    margin: 5px 0
 }

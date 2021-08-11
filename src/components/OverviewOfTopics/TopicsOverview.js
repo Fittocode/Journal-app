@@ -137,7 +137,7 @@ class TopicsOverview extends Component {
             <Router>
                 <div className="to-first-row">
                     <button className="to-button" onClick={this.props.libraryToggle}>Recent Entries</button>
-                    <h2><Link to={`/`} className="text-placeholder">View All Topics</Link></h2>
+                    <h2><Link to={`/`} className="text-placeholder" style={{ color: '#ff385c' }}>View All Topics</Link></h2>
                     <button className="to-button" onClick={this.props.addTopicToggle}>{(!this.props.addTopic) ? 'Add Topic' : 'Hide Add Topic'}</button>
                 </div>
                 {(this.props.addTopic) ? <AddTopic clickToAdd={this.props.addTopicHandler} /> : null}

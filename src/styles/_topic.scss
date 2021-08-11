@@ -1,5 +1,5 @@
 .topics {
-    margin-top: .5rem;
+    margin-top: 0rem;
     padding: 1rem 1rem 0rem 1rem;
     margin-left: 20%;
     margin-right: 20%;
@@ -11,7 +11,7 @@
 }
 
 .topic-title {
-    color: #6b23e0;
+    color: #1b1b1b;
 }
 
 .first-row {
@@ -25,8 +25,8 @@
 }
 
 .add-topic {
-    padding: 2rem 0rem 0rem;
-    margin-right: 5%;
+    padding: 2rem 1rem 0rem;
+    margin-right: 20%;
     margin-left: 20%;
 }
 
@@ -55,7 +55,7 @@
 .to-first-row {
     display: flex;
     justify-content: space-between;
-    padding-top: 2rem;
+    padding: 2rem 1rem 0rem;
     margin-right: 20%;
     margin-left: 20%;
     margin-bottom: 1rem;
@@ -76,7 +76,15 @@
 
 // add topic 
 
-.topic-labels {
+.labels {
     padding-left: 4px;
     padding-right: .5rem;
+}
+
+.textarea {
+    padding: .3rem;
+}
+
+.addtopic-p {
+    padding: 10px 0px 10px;
 }

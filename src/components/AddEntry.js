@@ -61,8 +61,8 @@ class AddEntry extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Date Created:
+                    Date Created:
+                    <label className="labels">
                         <input name="date" type="text" value={this.state.date} onChange={this.handleChange} placeholder="Month/Day/Year"></input>
                     </label>
                     <div>
@@ -70,11 +70,11 @@ class AddEntry extends Component {
                         <textarea name="text" type="text" value={this.state.text} onChange={this.handleChange} placeholder="What's on your mind?" cols="100" rows="10" />
                         <br />
                     </div>
-                    <label>
-                        Entry keywords:
+                    Entry keywords:
+                    <label className="labels">
                         <input name="tags" type="text" value={this.state.tags} onChange={this.handleTagsInput}></input>
-                        (Use commas with no spaces to separate tags)
                     </label>
+                    (Use commas with no spaces to separate tags)
                     <div>
                         <br />
                         <input type="submit" value="submit" />
