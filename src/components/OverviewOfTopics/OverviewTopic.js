@@ -4,8 +4,6 @@ import LoggedEntry from './LoggedEntry'
 // Router
 import { Link } from 'react-router-dom'
 
-
-
 const OverviewTopic = ({ topicTitle, entries, calculateWordCount, entryWordCount, index, filteredIndex, textIndexesOfSearch, searchSelector }) => {
 
     let featuredEntry = entries[filteredIndex]

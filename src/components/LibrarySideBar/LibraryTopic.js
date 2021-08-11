@@ -1,14 +1,15 @@
 import React from 'react'
-// style 
-import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const LibraryTopic = ({ topicTitle, wordCount, date, tags, text }) => {
+const LibraryTopic = ({ topicTitle, date, tags, text, topicURL }) => {
 
     console.log(topicTitle)
     return (
         <div className="library-song">
             <div>
-                <h3 className="topic-title">{topicTitle}</h3>
+                <Link to={`/${topicURL(topicTitle)}`} className="text-placeholder">
+                    <h3 className="topic-title">{topicTitle}</h3>
+                </Link>
             </div>
             <p>{date}</p>
             <hr></hr>
@@ -18,24 +19,5 @@ const LibraryTopic = ({ topicTitle, wordCount, date, tags, text }) => {
     )
 }
 
-const StyledLine = styled.hr`
-    width: 100%;
-`
-const StyledLibraryTopic = styled.div`
-    margin: .5rem .5rem .5rem;
-    padding: 1rem 1rem 1rem;
-    width: 17rem;
-    background-color: white;
-    border-radius: .5rem;
-`
-
-const StyledFirstLine = styled.div`
-    display: flex;
-    justify-content: space-between;
-    height: 2.5rem;
-`
-const StyledTags = styled.p`
-    color: #1EA48C;
-`
 
 export default LibraryTopic

@@ -1,8 +1,6 @@
 import Quill from 'quill';
 import React, { useState } from 'react'
 import ReactQuill from 'react-quill';
-// style
-import styled from 'styled-components'
 
 const AddTopic = ({ clickToAdd }) => {
 

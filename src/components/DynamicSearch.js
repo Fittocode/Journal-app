@@ -33,6 +33,11 @@ class DynamicSearch extends Component {
         console.log(this.state.libraryStatus)
     }
 
+    topicURL = (topicTitle) => {
+        let topicURLFormat = topicTitle.split(' ').join('-')
+        return (topicTitle.includes('?')) ? topicURLFormat.slice(0, topicTitle.length - 1) : topicURLFormat
+    }
+
     render() {
         return (
             <div>
@@ -45,6 +50,7 @@ class DynamicSearch extends Component {
                 <Library
                     libraryStatus={this.state.libraryStatus}
                     topicsList={this.props.topicsList}
+                    topicURL={this.topicURL}
                 />
                 <TopicsOverview
                     topicsList={this.props.topicsList}
@@ -55,6 +61,7 @@ class DynamicSearch extends Component {
                     search={this.state.search}
                     selectorValue={this.state.selectorValue}
                     libraryToggle={this.libraryToggle}
+                    topicURL={this.topicURL}
                 />
             </div>
         )

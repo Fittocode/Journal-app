@@ -9,11 +9,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 class TopicsOverview extends Component {
 
-    topicURL = (topicTitle) => {
-        let topicURLFormat = topicTitle.split(' ').join('-')
-        return (topicTitle.includes('?')) ? topicURLFormat.slice(0, topicTitle.length - 1) : topicURLFormat
-    }
-
     calculateWordLength = (entries) => {
         let wordLength = 0
         if (entries.length > 1) {
@@ -41,7 +36,7 @@ class TopicsOverview extends Component {
                         return topicEntryTags.indexOf(searchInput) !== -1
                     }
                 }
-            } else if (topic.entries[i].tags.length = 1) {
+            } else if (topic.entries[i].tags.length === 1) {
                 let topicEntryTags = topic.entries[i].tags.toLowerCase()
                 console.log(topicEntryTags.length)
                 if (topicEntryTags.includes(searchInput)) {
@@ -88,7 +83,7 @@ class TopicsOverview extends Component {
                         return [topicEntryTags.indexOf(searchInput), topicEntryTags.indexOf(searchInput) + searchInput.length]
                     }
                 }
-            } else if (topic.entries[i].tags.length = 1) {
+            } else if (topic.entries[i].tags.length === 1) {
                 let topicEntryTags = topic.entries[i].tags.toLowerCase()
                 if (topicEntryTags.includes(searchInput)) {
                     return [topicEntryTags.indexOf(searchInput), topicEntryTags.indexOf(searchInput) + searchInput.length]
@@ -139,45 +134,43 @@ class TopicsOverview extends Component {
         })
 
         return (
-            <div>
-                <Router>
-                    <div className="to-first-row">
-                        <button className="to-button" onClick={this.props.libraryToggle}>Recent Entries</button>
-                        <h2><Link to={`/`} className="text-placeholder">View All Topics</Link></h2>
-                        <button className="to-button" onClick={this.props.addTopicToggle}>{(!this.props.addTopic) ? 'Add Topic' : 'Hide Add Topic'}</button>
-                    </div>
-                    {(this.props.addTopic) ? <AddTopic clickToAdd={this.props.addTopicHandler} /> : null}
-                    <Switch>
-                        <Route path={'/'} exact>
-                            {filteredTopics.map((topic, index) => {
-                                return <OverviewTopic
-                                    key={index}
-                                    topicTitle={topic.topicTitle}
-                                    calculateWordCount={this.calculateWordLength}
-                                    entryWordCount={this.entryWordCount}
-                                    entries={topic.entries}
-                                    index={index}
-                                    textIndexesOfSearch={this.textIndexesOfSearch(topic)}
-                                    filteredIndex={(this.props.selectorValue === 'content') ? this.filterContentIndex(topic) : (this.props.selectorValue === 'keyword') ? this.filterKeywordIndex(topic) : topic.entries.length - 1}
-                                    searchSelector={(this.props.selectorValue === 'content') ? 'content' : (this.props.selectorValue === 'keyword') ? 'keyword' : 'title'}
-                                />
-                            })}
-                        </Route>
-                        {this.props.topicsList.map((topic, index) => {
-                            return <Route path={`/${this.topicURL(topic.topicTitle)}`} key={index} exact>
-                                <Topic
-                                    topic={topic}
-                                    calculateWordCount={this.calculateWordLength}
-                                    entryWordCount={this.entryWordCount}
-                                    entries={topic.entries}
-                                    addEntryHandler={this.props.addEntryHandler}
-                                    textIndexesOfSearch={this.textIndexesOfSearch(topic)}
-                                />
-                            </Route>
+            <Router>
+                <div className="to-first-row">
+                    <button className="to-button" onClick={this.props.libraryToggle}>Recent Entries</button>
+                    <h2><Link to={`/`} className="text-placeholder">View All Topics</Link></h2>
+                    <button className="to-button" onClick={this.props.addTopicToggle}>{(!this.props.addTopic) ? 'Add Topic' : 'Hide Add Topic'}</button>
+                </div>
+                {(this.props.addTopic) ? <AddTopic clickToAdd={this.props.addTopicHandler} /> : null}
+                <Switch>
+                    <Route path={'/'} exact>
+                        {filteredTopics.map((topic, index) => {
+                            return <OverviewTopic
+                                key={index}
+                                topicTitle={topic.topicTitle}
+                                calculateWordCount={this.calculateWordLength}
+                                entryWordCount={this.entryWordCount}
+                                entries={topic.entries}
+                                index={index}
+                                textIndexesOfSearch={this.textIndexesOfSearch(topic)}
+                                filteredIndex={(this.props.selectorValue === 'content') ? this.filterContentIndex(topic) : (this.props.selectorValue === 'keyword') ? this.filterKeywordIndex(topic) : topic.entries.length - 1}
+                                searchSelector={(this.props.selectorValue === 'content') ? 'content' : (this.props.selectorValue === 'keyword') ? 'keyword' : 'title'}
+                            />
                         })}
-                    </Switch>
-                </Router>
-            </div>
+                    </Route>
+                    {this.props.topicsList.map((topic, index) => {
+                        return <Route path={`/${this.props.topicURL(topic.topicTitle)}`} key={index} exact>
+                            <Topic
+                                topic={topic}
+                                calculateWordCount={this.calculateWordLength}
+                                entryWordCount={this.entryWordCount}
+                                entries={topic.entries}
+                                addEntryHandler={this.props.addEntryHandler}
+                                textIndexesOfSearch={this.textIndexesOfSearch(topic)}
+                            />
+                        </Route>
+                    })}
+                </Switch>
+            </Router>
         )
     }
 }

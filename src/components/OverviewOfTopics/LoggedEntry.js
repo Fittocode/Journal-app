@@ -1,6 +1,4 @@
 import React from 'react'
-// style
-import styled from 'styled-components'
 import { useLocation } from 'react-router-dom'
 
 const LoggedEntry = ({ date, tags, text, wordCount, textIndexesOfSearch, searchSelector }) => {
