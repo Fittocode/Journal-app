@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import AddTopic from './AddTopic'
 import OverviewTopic from './OverviewTopic'
 import Topic from '../Topic'
+import NoResult from '../OverviewOfTopics/NoResult'
 // Router
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
@@ -132,18 +133,18 @@ class TopicsOverview extends Component {
             // determine if searching by title or by keyword,
             return (this.props.selectorValue === 'title') ? topicItem.topicTitle.toLowerCase().indexOf(this.props.search.toLowerCase()) !== -1 : (this.props.selectorValue === 'content') ? this.filterByContent(topicItem) : this.filterByKeyword(topicItem)
         })
-
+        console.log(filteredTopics)
         return (
             <Router>
                 <div className="to-first-row">
                     <button className="to-button" onClick={this.props.libraryToggle}>Recent Entries</button>
-                    <h2><Link to={`/`} className="text-placeholder" style={{ color: '#ff385c' }}>View All Topics</Link></h2>
+                    <h2><Link to={`/`} className="text-placeholder" style={{ color: 'white' }}>View All Topics</Link></h2>
                     <button className="to-button" onClick={this.props.addTopicToggle}>{(!this.props.addTopic) ? 'Add Topic' : 'Hide Add Topic'}</button>
                 </div>
                 {(this.props.addTopic) ? <AddTopic clickToAdd={this.props.addTopicHandler} /> : null}
                 <Switch>
                     <Route path={'/'} exact>
-                        {filteredTopics.map((topic, index) => {
+                        {(filteredTopics.length === 1) ? filteredTopics.map((topic, index) => {
                             return <OverviewTopic
                                 key={index}
                                 topicTitle={topic.topicTitle}
@@ -155,7 +156,7 @@ class TopicsOverview extends Component {
                                 filteredIndex={(this.props.selectorValue === 'content') ? this.filterContentIndex(topic) : (this.props.selectorValue === 'keyword') ? this.filterKeywordIndex(topic) : topic.entries.length - 1}
                                 searchSelector={(this.props.selectorValue === 'content') ? 'content' : (this.props.selectorValue === 'keyword') ? 'keyword' : 'title'}
                             />
-                        })}
+                        }) : <NoResult />}
                     </Route>
                     {this.props.topicsList.map((topic, index) => {
                         return <Route path={`/${this.props.topicURL(topic.topicTitle)}`} key={index} exact>

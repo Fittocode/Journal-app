@@ -1,11 +1,11 @@
 .library {
     position: fixed;
-    top: 50px;
+    top: 48px;
     left: 0;
-    width: 22.5rem;
+    width: 20rem;
     height: 100%;
     padding-top: 16px;
-    box-shadow: 2px 20px 30px rgb(201, 201, 201);
+    box-shadow: 2px 20px 10px rgb(255, 255, 255, 0.6);
     overflow: scroll;
     transform: translateX(-100%);
     transition: all 0.5s ease;
@@ -19,6 +19,7 @@
 .library-song {
     padding: 0.5rem 1rem 1rem 1rem;
     transition: background 0.3s ease;
+    background-color: white;
     &:hover {
         background: rgb(241, 241, 241);
     }

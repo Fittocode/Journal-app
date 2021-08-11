@@ -4,6 +4,8 @@
     margin-left: 20%;
     margin-right: 20%;
     transition: background 0.3s ease;
+    background-color: white;
+    border-bottom: solid 1px #ebebeb;
 }
 
 .topic-button {
@@ -25,9 +27,10 @@
 }
 
 .add-topic {
-    padding: 2rem 1rem 0rem;
+    padding: 2rem 1rem 1rem;
     margin-right: 20%;
     margin-left: 20%;
+    background-color: rgb(216, 216, 216);
 }
 
 // overview topics
@@ -58,19 +61,24 @@
     padding: 2rem 1rem 0rem;
     margin-right: 20%;
     margin-left: 20%;
-    margin-bottom: 1rem;
+    margin-top: 2rem;
+    padding-bottom: 1rem;
+    background-color: #4e4e4e;
+    border-bottom: solid 1px #ebebeb;
+    border-radius: 6px 6px 0px 0px;
 }
 
 .to-button {
-    background: transparent;
+    background: white;
+    color: black;
     border: none;
     cursor: pointer;
-    border: 2px solid rgb(65, 65, 65);
+    border: 2px solid rgb(255, 255, 255);
     padding: 0.5rem;
     transition: all 0.3s ease;
     &:hover{
-        background: rgb(65,65,65);
-        color: white;
+        background: rgb(216, 216, 216);
+        border-color: rgb(216, 216, 216)
     }
 }
 

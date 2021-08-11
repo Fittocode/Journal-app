@@ -28,11 +28,7 @@ const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordC
             <div>
                 <button className="to-button topic-button" onClick={addEntryToggle}>{(!addEntry) ? 'Add Entry' : 'Hide Add Entry'}</button>
             </div>
-            <div>
-                <br />
-                {(addEntry) ? <AddEntry topic={topic} addEntryHandler={addEntryHandler} addEntryToggle={addEntryToggle} /> : null}
-            </div>
-
+            {(addEntry) ? <div className="add-entry-box"><AddEntry topic={topic} addEntryHandler={addEntryHandler} addEntryToggle={addEntryToggle} /> </div> : null}
         </div>
     )
 }

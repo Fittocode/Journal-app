@@ -26,7 +26,6 @@ const LoggedEntry = ({ date, tags, text, wordCount, textIndexesOfSearch, searchS
             }) : `#${tags}`}</div>
             <br />
             {(location.pathname === '/' && searchSelector === 'content') ? <p>{text.slice(0, textStartIndex)}<span className="highlightedText">{text.slice(textStartIndex, textEndIndex)}</span>{text.slice(textEndIndex, text.length)}</p> : <p>{text}</p>}
-            <br />
         </div >
     )
 }
