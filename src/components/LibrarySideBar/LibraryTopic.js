@@ -7,9 +7,7 @@ const LibraryTopic = ({ topicTitle, date, tags, text, topicURL }) => {
     return (
         <div className="library-song">
             <div>
-                <Link to={`/${topicURL(topicTitle)}`} className="text-placeholder">
-                    <h3 className="topic-title">{topicTitle}</h3>
-                </Link>
+                <h3 className="topic-title">{topicTitle}</h3>
             </div>
             <p>{date}</p>
             <hr></hr>

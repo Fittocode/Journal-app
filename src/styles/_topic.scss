@@ -1,11 +1,13 @@
 .topics {
-    padding-top: 1rem;
+    margin-top: .5rem;
+    padding: 1rem 1rem 0rem 1rem;
     margin-left: 20%;
     margin-right: 20%;
     transition: background 0.3s ease;
-    &:hover {
-        background: rgb(241, 241, 241);
-    }
+}
+
+.topic-button {
+    margin-top: 1rem;
 }
 
 .topic-title {
@@ -13,14 +15,13 @@
 }
 
 .first-row {
-    padding-top: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logged-entry {
-    padding-top: 1rem;  
+    padding-top: 0rem;  
 }
 
 .add-topic {
@@ -57,6 +58,7 @@
     padding-top: 2rem;
     margin-right: 20%;
     margin-left: 20%;
+    margin-bottom: 1rem;
 }
 
 .to-button {
@@ -70,4 +72,11 @@
         background: rgb(65,65,65);
         color: white;
     }
+}
+
+// add topic 
+
+.topic-labels {
+    padding-left: 4px;
+    padding-right: .5rem;
 }

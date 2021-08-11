@@ -40,7 +40,7 @@ class DynamicSearch extends Component {
 
     render() {
         return (
-            <div>
+            <div className="background-home">
                 <Navbar
                     handleSearchChange={this.handleSearchChange}
                     search={this.state.search}

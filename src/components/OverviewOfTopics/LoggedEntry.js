@@ -16,7 +16,6 @@ const LoggedEntry = ({ date, tags, text, wordCount, textIndexesOfSearch, searchS
 
     return (
         <div className="entry">
-            <hr />
             <div className="first-row">
                 <span>{date}</span>
                 <span>{(text === '') ? 7 : wordCount} {(wordCount === 1) ? `word` : `words`}</span>

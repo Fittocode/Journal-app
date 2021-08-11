@@ -26,7 +26,7 @@ const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordC
                 })}
             </div>
             <div>
-                <button className="to-button" onClick={addEntryToggle}>{(!addEntry) ? 'Add Entry' : 'Hide Add Entry'}</button>
+                <button className="to-button topic-button" onClick={addEntryToggle}>{(!addEntry) ? 'Add Entry' : 'Hide Add Entry'}</button>
             </div>
             <div>
                 <br />

@@ -59,12 +59,12 @@ const AddTopic = ({ clickToAdd }) => {
     return (
         <div className="add-topic">
             <form onSubmit={handleSubmit}>
-                <label>
-                    Topic Title:
+                Topic Title:
+                <label className="topic-labels">
                     <input name="topicTitle" type="text" value={topicTitle} onChange={handleTopicInput}></input>
                 </label>
-                <label>
-                    Date Created:
+                Date Created:
+                <label className="topic-labels">
                     <input name="date" type="text" value={date} onChange={handleDateInput} placeholder="Month/Day/Year"></input>
                 </label>
                 <div>
@@ -77,11 +77,11 @@ const AddTopic = ({ clickToAdd }) => {
 
                     <br />
                 </div>
-                <label>
-                    Entry keywords:
+                Entry keywords:
+                <label className="topic-labels">
                     <input name="tags" type="text" value={tags} onChange={handleTagsInput}></input>
-                    (Use commas with no spaces to separate tags)
                 </label>
+                (Use commas with no spaces to separate tags)
                 <div>
                     <br />
                     <input type="submit" value="submit" />
