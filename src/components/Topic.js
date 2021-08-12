@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 // components
 import LoggedEntry from '../components/OverviewOfTopics/LoggedEntry'
 import AddEntry from './AddEntry'
-import EntryOptions from './EntryOptions'
 
 const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordCount, textIndexesOfSearch }) => {
 
@@ -15,10 +14,6 @@ const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordC
         setAddEntry(!addEntry)
     }
 
-    const addEntryOptions = () => {
-        return <EntryOptions />
-    }
-
     return (
         <div>
             <div className="first-row topics">
@@ -27,8 +22,8 @@ const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordC
             </div>
             <div className="entry-margins">
                 {entries.map((entry, index) => {
-                    return <div className="hover-entry" onClick={addEntryOptions}>
-                        <LoggedEntry key={index} date={entry.date} tags={entry.tags} wordCount={entryWordCount(entry.text)} text={entry.text} textIndexesOfSearch={textIndexesOfSearch} />
+                    return <div className="hover-entry"> {
+                        <LoggedEntry key={index} date={entry.date} tags={entry.tags} wordCount={entryWordCount(entry.text)} text={entry.text} textIndexesOfSearch={textIndexesOfSearch} />}
                         <div style={{ borderBottom: 'solid 1px #ebebeb' }} />
                     </div>
                 })}

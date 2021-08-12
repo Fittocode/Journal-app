@@ -2,9 +2,9 @@ import React from 'react'
 
 function EntryOptions() {
     return (
-        <div>
-            <button className="to-button">Edit</button>
-            <button className="to-button">Delete</button>
+        <div className="entry-options">
+            <button className="to-button e-opt-buttons">Edit</button>
+            <button className="to-button e-opt-buttons">Delete</button>
         </div>
     )
 }
