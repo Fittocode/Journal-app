@@ -1,10 +1,15 @@
 .entry {
-    padding-bottom: 1rem;
-    padding-top: 0px;
+    padding: 1rem 0rem 1rem 0rem;
+    transition: all 0.5s ease;
+}
+
+.entry-margins {
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .first-row {
-    padding-top: 1rem;
+    padding-bottom: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,7 +26,30 @@
 .add-entry-box {
     background-color: rgb(216, 216, 216);
     margin-top: 0rem;
-    margin-bottom: 1rem;
     padding: 1rem 1rem 1rem;
-    border: solid 1px grey;
+    border-bottom: none;
+    border-radius: 0px 0px 6px 6px;
+}
+
+.hover-entry {
+    background-color: white;
+    transition: all 0.5s ease;
+    &:hover{
+        cursor: pointer;
+        background: rgb(241, 241, 241);
+    }
+}
+
+.entry-button {
+    background: rgb(216, 216, 216);
+    color: black;
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    &:hover{
+        background: rgb(216, 216, 216);
+        border-color: rgb(216, 216, 216)
+    }
 }

@@ -15,12 +15,11 @@ const LoggedEntry = ({ date, tags, text, wordCount, textIndexesOfSearch, searchS
     console.log(location.pathname)
 
     return (
-        <div className="entry">
+        <div className="entry" style={{ padding: '1rem' }}>
             <div className="first-row">
                 <span>{date}</span>
                 <span>{(text === '') ? 7 : wordCount} {(wordCount === 1) ? `word` : `words`}</span>
             </div>
-            <br />
             <div className="tag-color">{(tags.length > 1 && typeof tags === 'object') ? tags.map(tag => {
                 return `#${tag} `
             }) : `#${tags}`}</div>

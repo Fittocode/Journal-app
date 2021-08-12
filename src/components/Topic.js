@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 // components
 import LoggedEntry from '../components/OverviewOfTopics/LoggedEntry'
 import AddEntry from './AddEntry'
+import EntryOptions from './EntryOptions'
 
 const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordCount, textIndexesOfSearch }) => {
 
@@ -14,21 +15,28 @@ const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordC
         setAddEntry(!addEntry)
     }
 
+    const addEntryOptions = () => {
+        return <EntryOptions />
+    }
+
     return (
-        <div className="topics">
-            <div className="first-row">
+        <div>
+            <div className="first-row topics">
                 <h1 className="topic-title">{topic.topicTitle} </h1>
                 <span>{calculateWordCount(entries, 0)} total words</span>
             </div>
-            <div className="logged-entry">
+            <div className="entry-margins">
                 {entries.map((entry, index) => {
-                    return <LoggedEntry key={index} date={entry.date} tags={entry.tags} wordCount={entryWordCount(entry.text)} text={entry.text} textIndexesOfSearch={textIndexesOfSearch} />
+                    return <div className="hover-entry" onClick={addEntryOptions}>
+                        <LoggedEntry key={index} date={entry.date} tags={entry.tags} wordCount={entryWordCount(entry.text)} text={entry.text} textIndexesOfSearch={textIndexesOfSearch} />
+                        <div style={{ borderBottom: 'solid 1px #ebebeb' }} />
+                    </div>
                 })}
             </div>
-            <div style={{ paddingBottom: '1rem' }}>
+            <div className="topics" style={{ paddingBottom: '1rem' }}>
                 <button className="entry-button" onClick={addEntryToggle}>{(!addEntry) ? 'Add Entry' : 'Hide Add Entry'}</button>
             </div>
-            {(addEntry) ? <div className="add-entry-box"><AddEntry topic={topic} addEntryHandler={addEntryHandler} addEntryToggle={addEntryToggle} /> </div> : null}
+            {(addEntry) ? <div className="add-entry-box topics"><AddEntry topic={topic} addEntryHandler={addEntryHandler} addEntryToggle={addEntryToggle} /> </div> : null}
         </div >
     )
 }

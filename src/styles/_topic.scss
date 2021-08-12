@@ -1,19 +1,11 @@
 .topics {
     margin-top: 0rem;
-    padding: 1rem 1rem 0rem 1rem;
+    padding: 1rem 1rem 1rem 1rem;
     margin-left: 20%;
     margin-right: 20%;
     transition: background 0.3s ease;
     background-color: white;
     border-bottom: solid 1px #ebebeb;
-    @media screen and (max-width: 1200px) {
-            margin-left: 10%;
-            margin-right: 10%;
-    }
-    @media screen and (max-width: 500px) {
-        margin-left: 5%;
-        margin-right: 5%;
-    } 
 }
 
 .topic-button {
@@ -30,10 +22,6 @@
     align-items: center;
 }
 
-.logged-entry {
-    padding-top: 0rem;  
-}
-
 .add-topic {
     padding: 2rem 1rem 1rem;
     margin-right: 20%;
@@ -47,6 +35,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    padding: 0rem .5rem 0rem
 }
 
 .ov-title {
@@ -90,21 +79,6 @@
     }
 }
 
-.entry-button {
-    background: rgb(216, 216, 216);
-    color: black;
-    border: none;
-    cursor: pointer;
-    border: 2px solid rgb(255, 255, 255);
-    padding: 0.5rem;
-    transition: all 0.3s ease;
-    &:hover{
-        background: rgb(216, 216, 216);
-        border-color: rgb(216, 216, 216)
-    }
-
-}
-
 // add topic 
 
 .labels {
@@ -122,6 +96,12 @@
     padding: 10px 0px 10px;
 }
 
+.submit-button {
+
+}
+
+// responsivity
+
 @media screen and (max-width: 1200px) {
     .topicsm, .to-first-row, .add-topic {
         margin-left: 10%;
@@ -135,3 +115,4 @@
         margin-right: 5%;
     }
 } 
+

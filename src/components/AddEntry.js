@@ -67,7 +67,7 @@ class AddEntry extends Component {
                     </label>
                     <div>
                         <br />
-                        <textarea name="text" type="text" value={this.state.text} onChange={this.handleChange} placeholder="What's on your mind?" cols="100" rows="10" />
+                        <textarea className="textarea" name="text" type="text" value={this.state.text} onChange={this.handleChange} placeholder="What's on your mind?" cols="100" rows="10" />
                         <br />
                     </div>
                     Entry keywords:

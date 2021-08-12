@@ -21,9 +21,14 @@
     transition: background 0.3s ease;
     background-color: white;
     &:hover {
+        cursor: pointer;
         background: rgb(241, 241, 241);
     }
     border-bottom: solid 1px #ebebeb;
+    h3 {
+        font-size: 1.3rem;
+        font-weight: bold;
+    }
 }
 
 .song-description {

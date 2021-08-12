@@ -14,18 +14,19 @@ const OverviewTopic = ({ topicTitle, entries, calculateWordCount, entryWordCount
     }
 
     return (
-        <div className="topics hover-overview">
-            <div className="ov-row">
+        <div className="topics hover-overview" style={{ paddingLeft: '0rem', paddingRight: '0rem', paddingBottom: '0rem' }}>
+            <Link to={`/${topicURL(topicTitle)}`} className="text-placeholder">
                 <div className="ov-row">
-                    <Link to={`/${topicURL(topicTitle)}`} className="text-placeholder"><h2>{topicTitle}</h2></Link>
+                    <div className="ov-row">
+                        <h2>{topicTitle}</h2>
+                    </div>
+                    {/* <span>{(calculateWordCount(entries, index) === 1) ? `1 word` : `${calculateWordCount(entries, index)} total words`}</span> */}
+                    <div className="ov-entry">Entries: {(entries[entries.length - 1]) ? entries.length : 1}</div>
                 </div>
-                {/* <span>{(calculateWordCount(entries, index) === 1) ? `1 word` : `${calculateWordCount(entries, index)} total words`}</span> */}
-                <div className="ov-entry">Entries: {(entries[entries.length - 1]) ? entries.length : 1}</div>
-                {/* <span>Created: {entries[0].date}</span> */}
-            </div>
-            <div className="logged-entry">
-                <LoggedEntry date={featuredEntry.date} tags={featuredEntry.tags} text={featuredEntry.text} wordCount={entryWordCount(featuredEntry.text)} textIndexesOfSearch={textIndexesOfSearch} searchSelector={searchSelector} />
-            </div>
+                <div className="logged-entry">
+                    <LoggedEntry date={featuredEntry.date} tags={featuredEntry.tags} text={featuredEntry.text} wordCount={entryWordCount(featuredEntry.text)} textIndexesOfSearch={textIndexesOfSearch} searchSelector={searchSelector} />
+                </div>
+            </Link>
         </div >
     )
 }
