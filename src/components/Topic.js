@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 // components
 import LoggedEntry from '../components/OverviewOfTopics/LoggedEntry'
 import AddEntry from './AddEntry'
+// uuidv4()
+import { v4 as uuidv4 } from 'uuid';
 
-const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordCount, textIndexesOfSearch }) => {
+const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordCount, textIndexesOfSearch, deleteEntry }) => {
 
     console.log(entries)
 
@@ -21,9 +23,9 @@ const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordC
                 <span>{calculateWordCount(entries, 0)} total words</span>
             </div>
             <div className="entry-margins">
-                {entries.map((entry, index) => {
+                {entries.map((entry) => {
                     return <div className="hover-entry"> {
-                        <LoggedEntry key={index} date={entry.date} tags={entry.tags} wordCount={entryWordCount(entry.text)} text={entry.text} textIndexesOfSearch={textIndexesOfSearch} />}
+                        <LoggedEntry key={uuidv4()} id={uuidv4()} date={entry.date} tags={entry.tags} wordCount={entryWordCount(entry.text)} text={entry.text} textIndexesOfSearch={textIndexesOfSearch} deleteEntry={deleteEntry} entries={entries} entry={entry} />}
                         <div style={{ borderBottom: 'solid 1px #ebebeb' }} />
                     </div>
                 })}

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 
 import EntryOptions from '../EntryOptions'
 
-const LoggedEntry = ({ date, tags, text, wordCount, textIndexesOfSearch, searchSelector }) => {
+const LoggedEntry = ({ date, tags, text, wordCount, textIndexesOfSearch, searchSelector, deleteEntry, entries, entry, id }) => {
 
     let textStartIndex = 0
     let textEndIndex = 0
@@ -20,15 +20,13 @@ const LoggedEntry = ({ date, tags, text, wordCount, textIndexesOfSearch, searchS
     }
 
     const location = useLocation()
-    console.log(location.pathname)
+
+    console.log(id)
 
     return (
         <div onClick={addEntryOptions}>
             <div className="entry" style={{ padding: '1rem' }} id={(toggleOptions) ? 'overlay' : ''}>
-                {(toggleOptions) ? <div className='entry-options'>
-                    <button className="e2-button e-opt-buttons">Edit Entry</button>
-                    <button className="e-button e-opt-buttons">Delete</button>
-                </div> : null}
+                {(toggleOptions) ? <EntryOptions deleteEntry={deleteEntry} entries={entries} index={id} entry={entry} /> : null}
                 <div className="first-row">
                     <span>{date}</span>
                     <span>{(text === '') ? 7 : wordCount} {(wordCount === 1) ? `word` : `words`}</span>

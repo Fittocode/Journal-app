@@ -7,6 +7,8 @@ import Topic from '../Topic'
 import NoResult from '../OverviewOfTopics/NoResult'
 // Router
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+// uuidv4()
+import { v4 as uuidv4 } from 'uuid';
 
 class TopicsOverview extends Component {
 
@@ -127,14 +129,12 @@ class TopicsOverview extends Component {
     }
 
     render() {
-        console.log(this.props.selectorValue)
 
         let filteredTopics = this.props.topicsList.filter((topicItem) => {
             // determine if searching by title or by keyword,
             return (this.props.selectorValue === 'title') ? topicItem.topicTitle.toLowerCase().indexOf(this.props.search.toLowerCase()) !== -1 : (this.props.selectorValue === 'content') ? this.filterByContent(topicItem) : this.filterByKeyword(topicItem)
         })
-        console.log(filteredTopics)
-        console.log('')
+
         return (
             <Router>
                 <div className="to-first-row">
@@ -145,29 +145,30 @@ class TopicsOverview extends Component {
                 {(this.props.addTopic) ? <AddTopic clickToAdd={this.props.addTopicHandler} /> : null}
                 <Switch>
                     <Route path={'/'} exact>
-                        {(filteredTopics.length >= 1) ? filteredTopics.map((topic, index) => {
+                        {(filteredTopics.length >= 1) ? filteredTopics.map((topic) => {
                             return <OverviewTopic
-                                key={index}
+                                key={uuidv4()}
                                 topicTitle={topic.topicTitle}
                                 calculateWordCount={this.calculateWordLength}
                                 entryWordCount={this.entryWordCount}
                                 entries={topic.entries}
-                                index={index}
                                 textIndexesOfSearch={this.textIndexesOfSearch(topic)}
                                 filteredIndex={(this.props.selectorValue === 'content') ? this.filterContentIndex(topic) : (this.props.selectorValue === 'keyword') ? this.filterKeywordIndex(topic) : topic.entries.length - 1}
                                 searchSelector={(this.props.selectorValue === 'content') ? 'content' : (this.props.selectorValue === 'keyword') ? 'keyword' : 'title'}
                             />
                         }) : <NoResult />}
                     </Route>
-                    {this.props.topicsList.map((topic, index) => {
-                        return <Route path={`/${this.props.topicURL(topic.topicTitle)}`} key={index} exact>
+                    {this.props.topicsList.map((topic) => {
+                        return <Route path={`/${this.props.topicURL(topic.topicTitle)}`} exact>
                             <Topic
+                                key={uuidv4()}
                                 topic={topic}
                                 calculateWordCount={this.calculateWordLength}
                                 entryWordCount={this.entryWordCount}
                                 entries={topic.entries}
                                 addEntryHandler={this.props.addEntryHandler}
                                 textIndexesOfSearch={this.textIndexesOfSearch(topic)}
+                                deleteEntry={this.props.deleteEntry}
                             />
                         </Route>
                     })}

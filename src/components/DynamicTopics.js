@@ -29,9 +29,17 @@ function DynamicTopics() {
         entriesCopy.push(entry)
     }
 
+    const deleteEntry = (entries, entry) => {
+        const index = entries.indexOf(entry)
+        console.log(index)
+        entries.splice(index, 1)
+        console.log(entries)
+        return entries
+    }
+
     return (
         <div>
-            <DynamicSearch topicsList={topics} addTopicToggle={addTopicToggle} addTopicHandler={addTopicHandler} addEntryHandler={addEntryHandler} addTopic={addTopic} />
+            <DynamicSearch topicsList={topics} addTopicToggle={addTopicToggle} addTopicHandler={addTopicHandler} addEntryHandler={addEntryHandler} addTopic={addTopic} deleteEntry={deleteEntry} />
         </div>
     )
 }
