@@ -66,8 +66,8 @@
     height: 80px;
     left: 41%;
     top: 20%;
-    padding-top: 20px;
-    padding-left: 2rem;
+    padding-top: 21px;
+    padding-left: 1.9rem;
     width: 20%;
     border: solid 1px #dadada;
     border-radius: 6px;
@@ -88,17 +88,17 @@
 }
 
 .e-button {
-    background: rgb(50, 198, 235);
+    background: #ff5351;
     color: white;
     &:hover{
-        background: rgb(44, 182, 216);
+        background: #fa3e3b;
     }
 }
 
 .e2-button {
-    background: #696969;
+    background: rgb(29, 184, 223);
     color: white;
     &:hover{
-        background: #4E4E4E;
+        background:rgb(17, 176, 216);
     }
 }

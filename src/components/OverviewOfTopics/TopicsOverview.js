@@ -135,6 +135,8 @@ class TopicsOverview extends Component {
             return (this.props.selectorValue === 'title') ? topicItem.topicTitle.toLowerCase().indexOf(this.props.search.toLowerCase()) !== -1 : (this.props.selectorValue === 'content') ? this.filterByContent(topicItem) : this.filterByKeyword(topicItem)
         })
 
+        console.log(this.props.topicsList)
+
         return (
             <Router>
                 <div className="to-first-row">
@@ -158,20 +160,23 @@ class TopicsOverview extends Component {
                             />
                         }) : <NoResult />}
                     </Route>
-                    {this.props.topicsList.map((topic) => {
-                        return <Route path={`/${this.props.topicURL(topic.topicTitle)}`} exact>
-                            <Topic
-                                key={uuidv4()}
-                                topic={topic}
-                                calculateWordCount={this.calculateWordLength}
-                                entryWordCount={this.entryWordCount}
-                                entries={topic.entries}
-                                addEntryHandler={this.props.addEntryHandler}
-                                textIndexesOfSearch={this.textIndexesOfSearch(topic)}
-                                deleteEntry={this.props.deleteEntry}
-                            />
-                        </Route>
-                    })}
+                    {(this.props.topicsList.length === 0) ? <NoResult /> :
+                        this.props.topicsList.map((topic) => {
+                            return <Route path={`/${this.props.topicURL(topic.topicTitle)}`} exact>
+                                <Topic
+                                    key={uuidv4()}
+                                    topic={topic}
+                                    calculateWordCount={this.calculateWordLength}
+                                    entryWordCount={this.entryWordCount}
+                                    entries={topic.entries}
+                                    addEntryHandler={this.props.addEntryHandler}
+                                    textIndexesOfSearch={this.textIndexesOfSearch(topic)}
+                                    deleteEntry={this.props.deleteEntry}
+                                    deleteTopic={this.props.deleteTopic}
+                                    topicsList={this.props.topicsList}
+                                />
+                            </Route>
+                        })}
                 </Switch>
             </Router>
         )

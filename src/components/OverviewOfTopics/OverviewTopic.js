@@ -1,6 +1,7 @@
 import React from 'react'
 // components
 import LoggedEntry from './LoggedEntry'
+import NoResult from './NoResult'
 // Router
 import { Link } from 'react-router-dom'
 

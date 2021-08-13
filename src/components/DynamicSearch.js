@@ -63,6 +63,7 @@ class DynamicSearch extends Component {
                     libraryToggle={this.libraryToggle}
                     topicURL={this.topicURL}
                     deleteEntry={this.props.deleteEntry}
+                    deleteTopic={this.props.deleteTopic}
                 />
             </div>
         )
