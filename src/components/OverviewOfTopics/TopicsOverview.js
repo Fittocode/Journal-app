@@ -136,6 +136,7 @@ class TopicsOverview extends Component {
         })
 
         console.log(this.props.topicsList)
+        console.log(filteredTopics.length)
 
         return (
             <Router>

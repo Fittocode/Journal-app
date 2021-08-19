@@ -28,7 +28,8 @@ const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordC
     const deleteEntry = (topic, index) => {
         const entriesCopy = topic.entries
         console.log(entriesCopy)
-        entriesCopy.splice(index, 1)
+        if (entriesCopy.length > 1) entriesCopy.splice(index, 1)
+        else alert('There should be at least one entry per topic!')
         setRerenderEntries(!rerenderEntries)
         setAddEntries(entriesCopy)
     }

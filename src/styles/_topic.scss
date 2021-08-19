@@ -104,14 +104,14 @@
 // responsivity
 
 @media screen and (max-width: 1200px) {
-    .topicsm, .to-first-row, .add-topic {
+    .topics, .to-first-row, .add-topic {
         margin-left: 10%;
         margin-right: 10%;
     }
 }
 
 @media screen and (max-width: 500px) {
-    .topicsm, .to-first-row, .add-topic {
+    .topics, .to-first-row, .add-topic {
         margin-left: 5%;
         margin-right: 5%;
     }

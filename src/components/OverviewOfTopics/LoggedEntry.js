@@ -17,7 +17,7 @@ const LoggedEntry = ({ wordCount, topic, textIndexesOfSearch, searchSelector, de
     const location = useLocation()
 
     return (
-        <div onClick={() => setToggleOptions(!toggleOptions)}>
+        <div onClick={() => setToggleOptions(!toggleOptions)} className="entry-frame">
             <div className="entry" style={{ padding: '1rem' }} id={(toggleOptions) ? 'overlay' : ''}>
                 {(toggleOptions) ? <EntryOptions
                     deleteEntry={deleteEntry}
