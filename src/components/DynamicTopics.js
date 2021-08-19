@@ -7,7 +7,6 @@ import DynamicSearch from './DynamicSearch'
 
 function DynamicTopics() {
     const [topics, setTopics] = useState(topicsJSON)
-    // const [entries, setEntries] = useState(topic.entries)
     const [addTopic, setAddTopic] = useState(false)
 
     // show/hide add topics form
@@ -21,34 +20,27 @@ function DynamicTopics() {
 
         topicsCopy.push(topic)
         setTopics(topicsCopy)
+        console.log(topicsCopy)
         setAddTopic(!addTopic)
     }
 
     const addEntryHandler = (topic, entry) => {
         const entriesCopy = topic.entries
-        entriesCopy.push(entry)
+        console.log(entriesCopy)
+        console.log(topic.entries)
+        topic.entries.push(entry)
     }
 
     const deleteTopic = (topic, topics) => {
-        if (topics.length > 0) {
-            const index = topics.indexOf(topic)
-            const topicsCopy = topic
-            topicsCopy.splice(index, 1)
-            setTopics(topicsCopy)
-        }
+        // if (topics.length > 0) {
+        //     const index = topics.indexOf(topic)
+        //     const topicsCopy = topic
+        //     topicsCopy.splice(index, 1)
+        //     setTopics(topicsCopy)
+        // }
     }
+    console.log(topics)
 
-    const deleteEntry = (deleteTopic, entries, entry, topic, topics) => {
-
-        if (entries.length === 1) {
-            deleteTopic(topic, topics)
-        }
-        const index = entries.indexOf(entry)
-        entries.splice(index, 1)
-
-
-        return entries
-    }
 
     return (
         <div>
@@ -58,7 +50,6 @@ function DynamicTopics() {
                 addTopicHandler={addTopicHandler}
                 addEntryHandler={addEntryHandler}
                 addTopic={addTopic}
-                deleteEntry={deleteEntry}
                 deleteTopic={deleteTopic}
             />
         </div>

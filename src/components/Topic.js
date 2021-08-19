@@ -6,17 +6,32 @@ import NoResult from './OverviewOfTopics/NoResult'
 // uuidv4()
 import { v4 as uuidv4 } from 'uuid';
 
-const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordCount, textIndexesOfSearch, deleteEntry, deleteTopic, topicsList }) => {
+const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordCount, textIndexesOfSearch, deleteTopic, topicsList }) => {
 
     console.log(entries)
 
-    const [addEntry, setAddEntry] = useState(true)
+    const [entryToggle, setEntryToggle] = useState(true)
+    const [addEntries, setAddEntries] = useState(entries)
+    const [rerenderEntries, setRerenderEntries] = useState(false)
 
-    // show/hide add topics form
+    // show/hide add entry form
     const addEntryToggle = () => {
-        setAddEntry(!addEntry)
+        setEntryToggle(!entryToggle)
     }
     console.log(entries.length)
+
+    // // show/hide edit delete entry buttons
+    // const entryOptionsToggle = () => {
+    //     setToggleOptions(!toggleOptions)
+    // }
+
+    const deleteEntry = (topic, index) => {
+        const entriesCopy = topic.entries
+        console.log(entriesCopy)
+        entriesCopy.splice(index, 1)
+        setRerenderEntries(!rerenderEntries)
+        setAddEntries(entriesCopy)
+    }
 
     return (
         <div>
@@ -25,18 +40,18 @@ const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordC
                 <span>{calculateWordCount(entries, 0)} total words</span>
             </div>
             <div className="entry-margins">
-                {(entries.length === 0) ? <NoResult /> : entries.map((entry) => {
-                    return <div className="hover-entry"> {
+                {(addEntries.length === 0) ? <NoResult /> : addEntries.map((entry, index) => {
+                    return <div className="hover-entry" > {
                         <LoggedEntry
                             key={uuidv4()}
-                            id={uuidv4()}
+                            id={index}
                             wordCount={entryWordCount(entry.text)}
                             textIndexesOfSearch={textIndexesOfSearch}
                             deleteEntry={deleteEntry}
                             deleteTopic={deleteTopic}
                             topicsList={topicsList}
                             topic={topic}
-                            entries={entries}
+                            entries={addEntries}
                             entry={entry}
                             date={entry.date}
                             text={entry.text}
@@ -47,9 +62,9 @@ const Topic = ({ topic, calculateWordCount, entries, addEntryHandler, entryWordC
                 })}
             </div>
             <div className="topics" style={{ paddingBottom: '1rem' }}>
-                <button className="entry-button" onClick={addEntryToggle}>{(!addEntry) ? 'Add Entry' : 'Hide Add Entry'}</button>
+                <button className="entry-button" onClick={addEntryToggle}>{(!entryToggle) ? 'Add Entry' : 'Hide Add Entry'}</button>
             </div>
-            {(addEntry) ? <div className="add-entry-box topics"><AddEntry topic={topic} addEntryHandler={addEntryHandler} addEntryToggle={addEntryToggle} /> </div> : null}
+            {(entryToggle) ? <div className="add-entry-box topics"><AddEntry topic={topic} addEntryHandler={addEntryHandler} addEntryToggle={addEntryToggle} /> </div> : null}
         </div >
     )
 }
