@@ -2,6 +2,7 @@ import app from "./server.js"
 import mongodb from 'mongodb'
 import dotenv from 'dotenv'
 import TopicsDAO from "./dao/topicsDAO.js"
+import EntriesDAO from './dao/entriesDAO.js'
 dotenv.config()
 const MongoClient = mongodb.MongoClient
 
@@ -11,7 +12,7 @@ MongoClient.connect(
     process.env.TOPICS_DB_URI,
     {
         maxPoolSize: 50,
-        wTimeout: 2500,
+        wtimeoutMS: 2500,
         useNewURLParser: true
     })
     .catch(err => {
@@ -20,6 +21,7 @@ MongoClient.connect(
     })
     .then(async client => {
         await TopicsDAO.injectDB(client)
+        await EntriesDAO.injectDB(client)
         app.listen(port, () => {
             console.log(`listening on port ${port}`)
         })

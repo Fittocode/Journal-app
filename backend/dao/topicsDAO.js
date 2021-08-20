@@ -22,7 +22,7 @@ export default class TopicsDAO {
         let query
         if (filters) {
             if ('topicTitle' in filters) {
-                query = { $text: { $search: filters['topicTitle'] } }
+                query = { 'topicTitle': { $eq: filters['topicTitle'] } }
             } else if ('date' in filters) {
                 query = { 'entries.date': { $eq: filters['date'] } }
             } else if ('tags' in filters) {
