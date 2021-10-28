@@ -1,119 +1,150 @@
 .topics {
-    margin-top: 0rem;
-    padding: 1rem 1rem 1rem 1rem;
-    margin-left: 20%;
-    margin-right: 20%;
-    transition: background 0.3s ease;
-    background-color: white;
-    border-bottom: solid 1px #ebebeb;
+  margin-top: 0rem;
+  padding: 1rem 1rem 1rem 1rem;
+  margin-left: 20%;
+  margin-right: 20%;
+  transition: background 0.3s ease;
+  background-color: white;
+  border-bottom: solid 1px #ebebeb;
 }
 
 .topic-button {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .topic-title {
-    color: #1b1b1b;
+  color: #1b1b1b;
 }
 
 .first-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .add-topic {
-    padding: 2rem 1rem 1rem;
-    margin-right: 20%;
-    margin-left: 20%;
-    background-color: rgb(216, 216, 216);
+  padding: 2rem 1rem 1rem;
+  margin-right: 20%;
+  margin-left: 20%;
+  background-color: rgb(216, 216, 216);
 }
 
 // overview topics
 
 .ov-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 0rem .5rem 0rem
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0rem 0.5rem 0rem;
 }
 
 .ov-title {
-    padding-top: 1rem;
-    display: flex;
-    align-items: flex-end;
+  padding-top: 1rem;
+  display: flex;
+  align-items: flex-end;
 }
 
 .ov-entry {
-    padding-left: 1rem;
-    display: flex;
-    align-items: flex-end;
+  padding-left: 1rem;
+  display: flex;
+  align-items: flex-end;
 }
 
 // topics overview
 
 .to-first-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 1rem 0rem;
-    margin-right: 20%;
-    margin-left: 20%;
-    margin-top: 2rem;
-    padding-bottom: 1rem;
-    background-color: #4e4e4e;
-    border-bottom: solid 1px #ebebeb;
-    border-radius: 6px 6px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem 0rem;
+  margin-right: 20%;
+  margin-left: 20%;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+  background-color: #4e4e4e;
+  border-bottom: solid 1px #ebebeb;
+  border-radius: 6px 6px 0px 0px;
 }
 
 .to-button {
+  background: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 8px;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+  &:hover {
+    background: rgb(216, 216, 216);
+    border-color: rgb(216, 216, 216);
+  }
+}
+
+// add topic
+
+.labels {
+  padding-left: 4px;
+  padding-right: 0.5rem;
+}
+
+.textarea {
+  padding: 0.3rem;
+  width: 100%;
+  height: 15vh;
+}
+
+.addtopic-p {
+  padding: 10px 0px 10px;
+}
+
+.submit-button {
+}
+
+// responsivity
+
+@media screen and (max-width: 1200px) {
+  .topics,
+  .to-first-row,
+  .add-topic {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .labels {
+    display: block;
+  }
+
+  .to-button {
     background: white;
     color: black;
     border: none;
     cursor: pointer;
     border: 2px solid rgb(255, 255, 255);
     border-radius: 8px;
-    padding: 0.5rem;
+    padding: 0.2rem;
     transition: all 0.3s ease;
-    &:hover{
-        background: rgb(216, 216, 216);
-        border-color: rgb(216, 216, 216)
+    &:hover {
+      background: rgb(216, 216, 216);
+      border-color: rgb(216, 216, 216);
     }
-}
-
-// add topic 
-
-.labels {
-    padding-left: 4px;
-    padding-right: .5rem;
-}
-
-.textarea {
-    padding: .3rem;
-    width: 100%;
-    height: 15vh
-}
-
-.addtopic-p {
-    padding: 10px 0px 10px;
-}
-
-.submit-button {
-
-}
-
-// responsivity
-
-@media screen and (max-width: 1200px) {
-    .topics, .to-first-row, .add-topic {
-        margin-left: 10%;
-        margin-right: 10%;
-    }
+  }
 }
 
 @media screen and (max-width: 500px) {
-    .topics, .to-first-row, .add-topic {
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-} 
+  .topics,
+  .to-first-row,
+  .add-topic {
+    margin-left: 3%;
+    margin-right: 5%;
+  }
 
+  .to-first-row {
+    padding: 1rem 1rem;
+  }
+
+  .text-placeholder {
+    font-size: 80%;
+  }
+}

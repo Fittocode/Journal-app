@@ -57,12 +57,12 @@ const AddTopic = ({ clickToAdd }) => {
     return (
         <div className="add-topic">
             <form onSubmit={handleSubmit}>
-                Topic Title:
                 <label className="labels">
+                Topic Title:
                     <input name="topicTitle" type="text" value={topicTitle} onChange={handleTopicInput}></input>
                 </label>
-                Date Created:
                 <label className="labels">
+                Date Created:
                     <input name="date" type="text" value={date} onChange={handleDateInput} placeholder="Month/Day/Year"></input>
                 </label>
                 <div>

@@ -1,110 +1,116 @@
 .library {
-    position: fixed;
-    top: 48px;
-    left: 0;
-    width: 20rem;
-    height: 100%;
-    padding-top: 16px;
-    box-shadow: 2px 20px 10px rgb(255, 255, 255, 0.6);
-    overflow: scroll;
-    transform: translateX(-100%);
-    transition: all 0.5s ease;
-    opacity: 0;
-    background: white;
-    h2{
-        padding: 1rem;
-    }
+  position: fixed;
+  top: 48px;
+  left: 0;
+  width: 20rem;
+  height: 100%;
+  padding-top: 16px;
+  box-shadow: 2px 20px 10px rgb(255, 255, 255, 0.6);
+  overflow: scroll;
+  transform: translateX(-100%);
+  transition: all 0.5s ease;
+  opacity: 0;
+  background: white;
+  h2 {
+    padding: 1rem;
+  }
+}
+
+.library-title {
+  display: flex;
+  justify-content: space-between;
 }
 
 .library-song {
-    padding: 0.5rem 1rem 1rem 1rem;
-    transition: background 0.3s ease;
-    background-color: white;
-    &:hover {
-        cursor: pointer;
-        background: rgb(241, 241, 241);
-    }
-    border-bottom: solid 1px #ebebeb;
-    h3 {
-        font-size: 1.3rem;
-        font-weight: bold;
-    }
+  padding: 0.5rem 1rem 1rem 1rem;
+  transition: background 0.3s ease;
+  background-color: white;
+  &:hover {
+    cursor: pointer;
+    background: rgb(241, 241, 241);
+  }
+  border-bottom: solid 1px #ebebeb;
+  h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
 }
 
 .song-description {
-    padding-left: 1rem;
-    h3 {
-        font-size: 1rem;
-    }
-    h4 {
-        font-size: .8rem;
-    }
+  padding-left: 1rem;
+  h3 {
+    font-size: 1rem;
+  }
+  h4 {
+    font-size: 0.8rem;
+  }
 }
 
 * {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
 }
 
 *::-webkit-scrollbar {
-    width: 0px;
+  width: 0px;
 }
 
 *::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: rgba(155, 155, 155, 0.5);
-    border-radius: 20px;
-    border: transparent;
+  background-color: rgba(155, 155, 155, 0.5);
+  border-radius: 20px;
+  border: transparent;
 }
 
-.selected{
+.selected {
+  background: rgb(99, 164, 250);
+  h3,
+  h4 {
+    color: white;
+  }
+  &:hover {
     background: rgb(99, 164, 250);
-    h3, h4{
-        color: white;
-    }
-    &:hover {
-        background: rgb(99, 164, 250);
-    }
+  }
 }
 
 .active-library {
-    transform: translateX(0%);
-    opacity: 1;
+  transform: translateX(0%);
+  opacity: 1;
 }
 
 @media screen and (max-width: 768px) {
-    .library {
-        width: 100%;
-    }
+  .library {
+    width: 100%;
+  }
 }
 
 // Library Topic
 
 hr {
-    width: 100%
+  width: 100%;
 }
 
 .library-topic {
-    margin: .5rem .5rem .5rem;
-    padding: 1rem 1rem 1rem;
-    width: 17rem;
-    background-color: white;
-    border-radius: .5rem;
+  margin: 0.5rem 0.5rem 0.5rem;
+  padding: 1rem 1rem 1rem;
+  width: 17rem;
+  background-color: white;
+  border-radius: 0.5rem;
 }
 
 .first-line {
-    display: flex;
-    justify-content: space-between;
-    height: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  height: 2.5rem;
 }
 
 .tags {
-    color: #0fc4f1;
+  color: #0fc4f1;
 }
 
 #library-topics > * {
-    margin: 5px 0
+  margin: 5px 0;
 }

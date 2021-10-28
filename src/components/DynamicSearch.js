@@ -51,6 +51,7 @@ class DynamicSearch extends Component {
                     libraryStatus={this.state.libraryStatus}
                     topicsList={this.props.topicsList}
                     topicURL={this.topicURL}
+                    libraryToggle={this.libraryToggle}
                 />
                 <TopicsOverview
                     topicsList={this.props.topicsList}
