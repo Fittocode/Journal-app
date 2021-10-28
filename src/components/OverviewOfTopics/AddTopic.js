@@ -1,6 +1,4 @@
-import Quill from 'quill';
 import React, { useState } from 'react'
-import ReactQuill from 'react-quill';
 
 const AddTopic = ({ clickToAdd }) => {
 

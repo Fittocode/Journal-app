@@ -1,3 +1,6 @@
+import mongodb from 'mongodb'
+const ObjectId = mongodb.ObjectId
+
 let topics
 
 export default class TopicsDAO {
@@ -52,6 +55,51 @@ export default class TopicsDAO {
         } catch (e) {
             console.error(`Unable to convert cursor to array or problem counting documents, ${e}`)
             return { topicsList: [], totalNumTopics: 0 }
+        }
+    }
+
+    static async addTopic(topicId, topicTitle, entries) {
+        try {
+            const topicDoc = {
+                topicId: ObjectId(topicId),
+                topicTitle: topicTitle,
+                entries: [{
+                    date: new Date(),
+                    tags: entries[0].tags,
+                    text: entries[0].text
+                }]
+            }
+            return await topics.insertOne(topicDoc)
+        } catch (e) {
+            console.log(`Unable to post topic: ${e}`)
+            return { error: e }
+        }
+    }
+
+    static async updateTopic(userId, topicId, topicTitle, entries) {
+        try {
+            const updateResponse = await topics.updateOne(
+                { user_id: userId, _id: ObjectId(topicId) },
+                { $set: { topicTitle: topicTitle, entries: entries } },
+            )
+            return updateResponse
+        } catch (e) {
+            console.error(`Unable to update topic: ${e}`)
+            return { error: e }
+        }
+    }
+
+    static async deleteTopic(topicId) {
+
+        try {
+            const deleteResponse = await topics.deleteOne({
+                _id: ObjectId(topicId),
+            })
+
+            return deleteResponse
+        } catch (e) {
+            console.error(`Unable to delete topic: ${e}`)
+            return { error: e }
         }
     }
 

@@ -1,8 +1,6 @@
 import React from 'react'
 // components
 import LibraryTopic from './LibraryTopic'
-// Router
-import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 const Library = ({ libraryStatus, topicsList, topicURL }) => {
     console.log(topicsList)

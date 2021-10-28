@@ -9,20 +9,20 @@ export default class EntriesDAO {
             return
         }
         try {
-            entries = await conn.db(process.env.TOPICS_NS).collection("entries")
+            entries = await conn.db(process.env.TOPICS_NS).collection("Entries")
             console.log(entries)
         } catch (e) {
             console.log(`Unable to establish collection handles in userDAO: ${e}`)
         }
     }
 
-    static async addEntry(topicId, user, entry, date) {
+    static async addEntry(topicId, user, text, date) {
         try {
             const entryDoc = {
                 name: user.name,
-                user_id: user_id,
+                user_id: user._id,
                 date: date,
-                entry: entry,
+                entry: text,
                 topic_id: ObjectId(topicId),
             }
             return await entries.insertOne(entryDoc)

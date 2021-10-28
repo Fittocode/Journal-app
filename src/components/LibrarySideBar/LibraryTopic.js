@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
-const LibraryTopic = ({ topicTitle, date, tags, text, topicURL }) => {
+const LibraryTopic = ({ topicTitle, date, tags, text }) => {
 
     console.log(topicTitle)
     return (
