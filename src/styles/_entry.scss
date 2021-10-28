@@ -1,104 +1,125 @@
-.entry {
-    position: relative;
-    padding: 1rem 0rem 1rem 0rem;
-    transition: all 0.5s ease;
+.entry-margins {
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
-.entry-margins {
-    margin-left: 20%;
-    margin-right: 20%;
+.entry {
+  padding: 1rem 0rem 1rem 0rem;
+  transition: all 0.5s ease;
 }
 
 .first-row {
-    padding-bottom: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .tag-color {
-    color: #0fc4f1;
+  color: #0fc4f1;
 }
 
 .highlightedText {
-    background-color: #fdf293;
-} 
+  background-color: #fdf293;
+}
 
 .add-entry-box {
-    background-color: rgb(216, 216, 216);
-    margin-top: 0rem;
-    padding: 1rem 1rem 1rem;
-    border-bottom: none;
-    border-radius: 0px 0px 6px 6px;
+  background-color: rgb(216, 216, 216);
+  margin-top: 0rem;
+  padding: 1rem 1rem 1rem;
+  border-bottom: none;
+  border-radius: 0px 0px 6px 6px;
 }
 
 .hover-entry {
-    background-color: white;
-    transition: all 0.5s ease;
-    &:hover{
-        cursor: pointer;
-        background: rgb(241, 241, 241);
-    }
+  background-color: white;
+  transition: all 0.5s ease;
+  &:hover {
+    cursor: pointer;
+    background: rgb(241, 241, 241);
+  }
 }
 
 .entry-button {
+  background: rgb(216, 216, 216);
+  color: black;
+  border: none;
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+  &:hover {
     background: rgb(216, 216, 216);
-    color: black;
-    border: none;
-    cursor: pointer;
-    border: 2px solid rgb(255, 255, 255);
-    padding: 0.5rem;
-    transition: all 0.3s ease;
-    &:hover{
-        background: rgb(216, 216, 216);
-        border-color: rgb(216, 216, 216)
-    }
+    border-color: rgb(216, 216, 216);
+  }
 }
 
-
 #overlay {
-    background-color: rgba(192, 192, 192, 0.801);
-    z-index: 2;
+  background-color: rgba(192, 192, 192, 0.801);
+}
+
+.entry-container {
+  display: flex;
+  justify-content: center;
+}
+
+.entry-text {
 }
 
 .entry-options {
-    position: absolute;
-    height: 80px;
-    left: 41%;
-    top: 20%;
-    padding-top: 21px;
-    padding-left: 1.9rem;
-    width: 20%;
-    border: solid 1px #dadada;
-    border-radius: 6px;
-    background-color: white;
-    box-shadow: 1px 2px 2px .5px rgb(145, 145, 145);
+  margin-top: 25px;
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  height: 70px;
+  padding: 1rem 0rem;
+  width: 200px;
+  border: solid 1px #dadada;
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: 1px 2px 2px 0.5px rgb(145, 145, 145);
 }
 
 .e-opt-buttons {
-    margin-right: .5rem
+  margin-right: 0.5rem;
 }
 
-.e-button, .e2-button {
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    padding: .7rem;
-    transition: all 0.3s ease;
+.e-button,
+.e2-button {
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 0.7rem;
+  transition: all 0.3s ease;
 }
 
 .e-button {
-    background: #ff5351;
-    color: white;
-    &:hover{
-        background: #fa3e3b;
-    }
+  background: #ff5351;
+  color: white;
+  &:hover {
+    background: #fa3e3b;
+  }
 }
 
 .e2-button {
-    background: rgb(29, 184, 223);
-    color: white;
-    &:hover{
-        background:rgb(17, 176, 216);
-    }
+  background: rgb(29, 184, 223);
+  color: white;
+  &:hover {
+    background: rgb(17, 176, 216);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .entry-margins {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .entry-margins {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 }

@@ -17,27 +17,33 @@ const LoggedEntry = ({ wordCount, topic, textIndexesOfSearch, searchSelector, de
     const location = useLocation()
 
     return (
-        <div onClick={() => setToggleOptions(!toggleOptions)} className="entry-frame">
-            <div className="entry" style={{ padding: '1rem' }} id={(toggleOptions) ? 'overlay' : ''}>
+        <div onClick={() => setToggleOptions(!toggleOptions)}>
+            <div id={(toggleOptions) ? 'overlay' : ''}>
+                <div className="entry-container">
                 {(toggleOptions) ? <EntryOptions
-                    deleteEntry={deleteEntry}
-                    deleteTopic={deleteTopic}
-                    topicsList={topicsList}
-                    entries={entries}
-                    topic={topic}
-                    id={id}
-                    entry={entry}
-                /> : null}
-                <div className="first-row">
-                    <span>{date}</span>
-                    <span>{(text === '') ? 7 : wordCount} {(wordCount === 1) ? `word` : `words`}</span>
+                        deleteEntry={deleteEntry}
+                        deleteTopic={deleteTopic}
+                        topicsList={topicsList}
+                        entries={entries}
+                        topic={topic}
+                        id={id}
+                        entry={entry}
+                        /> : null}
                 </div>
-                <div className="tag-color">{(tags.length > 1 && typeof tags === 'object') ? tags.map(tag => {
-                    return `#${tag} `
-                }) : `#${tags}`}</div>
-                <br />
-                {(location.pathname === '/' && searchSelector === 'content') ? <p>{text.slice(0, textStartIndex)}<span className="highlightedText">{text.slice(textStartIndex, textEndIndex)}</span>{text.slice(textEndIndex, text.length)}</p> : <p>{text}</p>}
-            </div >
+            <div className="entry" style={{ padding: '1rem' }}>
+                    <div className="entry-text">
+                        <div className="first-row">
+                            <span>{date}</span>
+                            <span>{(text === '') ? 7 : wordCount} {(wordCount === 1) ? `word` : `words`}</span>
+                        </div>
+                        <div className="tag-color">{(tags.length > 1 && typeof tags === 'object') ? tags.map(tag => {
+                            return `#${tag} `
+                        }) : `#${tags}`}</div>
+                        <br />
+                        {(location.pathname === '/' && searchSelector === 'content') ? <p>{text.slice(0, textStartIndex)}<span className="highlightedText">{text.slice(textStartIndex, textEndIndex)}</span>{text.slice(textEndIndex, text.length)}</p> : <p>{text}</p>}
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
