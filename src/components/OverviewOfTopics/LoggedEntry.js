@@ -16,6 +16,8 @@ const LoggedEntry = ({ wordCount, topic, textIndexesOfSearch, searchSelector, de
 
     const location = useLocation()
 
+    console.log(text)
+
     return (
         <div onClick={() => setToggleOptions(!toggleOptions)}>
             <div id={(toggleOptions) ? 'overlay' : ''}>

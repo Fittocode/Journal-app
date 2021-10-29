@@ -58,7 +58,7 @@ const AddTopic = ({ clickToAdd }) => {
         <div className="add-topic">
             <form onSubmit={handleSubmit}>
                 <label className="labels">
-                Topic Title:
+                Topic Title: 
                     <input name="topicTitle" type="text" value={topicTitle} onChange={handleTopicInput}></input>
                 </label>
                 <label className="labels">
