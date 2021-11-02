@@ -1,4 +1,3 @@
-// Step 1: Import React
 import React, { Component } from 'react'
 // components
 import AddTopic from './AddTopic'
@@ -135,13 +134,10 @@ class TopicsOverview extends Component {
             return (this.props.selectorValue === 'title') ? topicItem.topicTitle.toLowerCase().indexOf(this.props.search.toLowerCase()) !== -1 : (this.props.selectorValue === 'content') ? this.filterByContent(topicItem) : this.filterByKeyword(topicItem)
         })
 
-        console.log(this.props.topicsList)
-        console.log(filteredTopics.length)
-
         return (
             <Router>
                 <div className="to-first-row">
-                    <button className="to-button" onClick={this.props.libraryToggle}>Recent Entries</button>
+                    {/* <button className="to-button" onClick={this.props.libraryToggle}>Recent Entries</button> */}
                     <h2><Link to={`/`} className="text-placeholder" style={{ color: 'white' }}>View All Topics</Link></h2>
                     <button className="to-button" onClick={this.props.addTopicToggle}>{(!this.props.addTopic) ? 'Add Topic' : 'Hide Add Topic'}</button>
                 </div>

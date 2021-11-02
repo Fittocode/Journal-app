@@ -20,7 +20,6 @@ const OverviewTopic = ({ topicTitle, entries, calculateWordCount, entryWordCount
                     <div className="ov-row">
                         <h2>{topicTitle}</h2>
                     </div>
-                    {/* <span>{(calculateWordCount(entries, index) === 1) ? `1 word` : `${calculateWordCount(entries, index)} total words`}</span> */}
                     <div className="ov-entry">Entries: {(entries[entries.length - 1]) ? entries.length : 1}</div>
                 </div>
                 <div className="logged-entry">

@@ -11,5 +11,18 @@
                 "text": "This is a journal for quickly adding ideas in the form of tweet-like entries to new or pre-existing topics. Click on the topic title, 'Welcome!' to add another entry to this topic, such as the entry you are currently reading, or click on 'Add Topic' to add a new topic."
             }
         ]
+    },
+    {
+        "topicTitle": "A Note to Users",
+        "entries": [
+            {
+                "date": "11/2/2021",
+                "tags": [
+                    "note",
+                    "warning"
+                ],
+                "text": "You may come to find that when you refresh the page, all your content disappears! How useless is that? That's because this app is currently only client-side! You could say its purpose at the moment is more...illustrative than utilitarian. But don't worry! The backend is being worked on as you're reading this! Soon all your deep thoughts will be carved in digital stone."
+            }
+        ]
     }
 ]

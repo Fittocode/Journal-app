@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LibraryTopic = ({ topicTitle, date, tags, text }) => {
+const LibraryTopic = ({ topicTitle, date, tags, text, key}) => {
 
     console.log(topicTitle)
     return (
