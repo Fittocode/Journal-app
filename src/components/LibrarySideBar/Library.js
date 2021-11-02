@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // components
 import LibraryTopic from './LibraryTopic'
 // Router
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router} from 'react-router-dom'
 // uuidv4()
 import { v4 as uuidv4 } from 'uuid';
 

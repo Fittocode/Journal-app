@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // components
 import Navbar from './Navbar'
-import Library from './LibrarySideBar/Library'
+// import Library from './LibrarySideBar/Library'
 import TopicsOverview from './OverviewOfTopics/TopicsOverview'
 
 class DynamicSearch extends Component {
