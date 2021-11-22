@@ -23,3 +23,9 @@ https://zealous-kepler-ab4529.netlify.app/
 A Front-end only React app, styled wtih Sass.
 
 Backend being developed to utilize a MongoDB Atlas Database via an Express server.
+
+# Future Features
+
+The ability to edit pre-existing entries. 
+A recent entries sidebar for quickly adding entries to the latest topics.
+A back-end so users can create profiles where their topics and entries will be stored in a MongoDB Database.
