@@ -6,11 +6,19 @@ You know what the problem is with Twitter? There's no privacy! Well...duh. It's 
 
 That's why I decided to build an application very much reminiscient of Twitter, but also very much NOT twitter. No endless threads from people you don't even follow, no political mud-slinging, no ADHD-inducing information overload. In essence, freedom. A freedom to express your thoughts, however personal, in a sacred place, like that of a church or synagogue——just one that reflects the latest trends in UI.
 
-Try it out! 
+# Features
+
+A search bar that allows you to filter all topics and entries by either topic title, body content, or keyword tags, bringing up only the entries that match your search criteria. 
+
+The ability to easily add entries to pre-existing topics, creating threads of ideas building off one another, or create new topics entirely.
+
+The ability to delete existing entries. 
+
+# Try it out! 
 
 https://zealous-kepler-ab4529.netlify.app/
 
-Current Stack choices:
+# Current Stack choices:
 
 A Front-end only React app, styled wtih Sass.
 
